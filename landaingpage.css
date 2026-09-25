@@ -1,0 +1,1838 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+html, body{
+    scroll-behavior: auto;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+
+.container_nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px ;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.navbar_content {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+/* iOS Hamburger Button (Hidden on Desktop, Active on Tablet/Mobile) */
+.ios_menu_toggle {
+    display: none;
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    background: #fff8d9;
+    border: 1.5px solid rgba(17, 17, 17, 0.14);
+    box-shadow: 0 6px 16px rgba(20, 20, 20, 0.06);
+    cursor: pointer;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    padding: 0;
+    transition: background 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+    z-index: 20;
+}
+
+.ios_menu_toggle:hover {
+    transform: translateY(-1px);
+    background: #fff2b2;
+}
+
+.ios_menu_toggle.active {
+    background: yellow;
+    border: 1.5px dashed #111111;
+}
+
+.ios_bar {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: #111111;
+    border-radius: 999px;
+    transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), width 0.25s ease;
+}
+
+.ios_menu_toggle.active .bar_top {
+    transform: translateY(3.5px) rotate(45deg);
+}
+
+.ios_menu_toggle.active .bar_bottom {
+    transform: translateY(-3.5px) rotate(-45deg);
+}
+
+.navbar_content button{
+    padding:10px 14px;
+    background-color: yellow;
+    border: black solid 2px;
+    font-family: "poppins", serif;
+    font-weight: bold;
+    border-radius: 15px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Scheduly_logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.Scheduly_logo img{
+    width: 70px;
+    height: 70px;
+}
+
+.Scheduly_logo h2{
+    font-family:  "Playfair Display", serif;
+    font-style: italic;
+}
+
+
+.navbar_content a{
+    text-decoration: none;
+    color: black;
+    font-family: "Poppins", sans-serif;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    line-height: 1;
+}
+
+
+.Instagram_button{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: rgba(235, 227, 227, 0.568);
+    padding: 10px 12px;
+    border-radius: 14px;
+    cursor: pointer;
+    width: fit-content;
+    min-width: 46px;
+    min-height: 46px;
+}
+
+.Instagram_button ion-icon{
+    font-size: 25px;
+    display: block;
+    line-height: 1;
+}
+
+
+
+
+
+
+.page1{
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 110px;
+    padding: 120px 50px 40px;
+    background: #ffffff;
+    background: linear-gradient(339deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 34%, rgba(255, 252, 140, 1) 100%);
+}
+
+.typography1{
+    max-width: 520px;
+    flex: 1;
+    align-self: flex-start;
+    margin-top: 55px;
+}
+
+.header1{
+    font-family: "Archivo Black", sans-serif;
+}
+
+.header1 p{
+    margin: 0;
+    font-size: clamp(2.75rem, 5.8vw, 6.8rem);
+    line-height: 0.92;
+    letter-spacing: clamp(-2.8px, -0.04em, -1.2px);
+}
+
+.subheader1{
+    padding: 14px 0 0;
+    color: #1e1e1e;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 480px;
+}
+
+.image_slider{
+    position: relative;
+    width: min(34vw, 360px);
+    aspect-ratio: 9 / 18.7;
+    border-radius: 46px;
+    background: linear-gradient(145deg, #1a1a1a, #050505);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.18);
+    border: 2px solid rgba(255, 255, 255, 0.65);
+    overflow: hidden;
+    padding: 12px;
+}
+.image_slider::before,
+.image_slider::after {
+    content: none;
+}
+
+.slide_track {
+    position: absolute;
+    inset: 12px;
+    overflow: hidden;
+    border-radius: 36px;
+    background: #f6f6f6;
+    border: 1px solid rgba(0,0,0,0.08);
+}
+
+.slide_track img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    opacity: 0;
+    animation: slideshow 20s ease-in-out infinite;
+    background: #f1f1f1;
+    border-radius: 36px;
+    z-index: 1;
+}
+
+.slide_track img:nth-child(1) { animation-delay: 0s; z-index: 5; }
+.slide_track img:nth-child(2) { animation-delay: 4s; z-index: 4; }
+.slide_track img:nth-child(3) { animation-delay: 8s; z-index: 3; }
+.slide_track img:nth-child(4) { animation-delay: 12s; z-index: 2; }
+.slide_track img:nth-child(5) { animation-delay: 16s; z-index: 1; }
+
+.slide_track img:only-child {
+    opacity: 1;
+    animation: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@keyframes slideshow {
+    0%, 18% {
+        opacity: 1;
+    }
+    28%, 100% {
+        opacity: 0;
+    }
+}
+
+
+
+.hashtag_content{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+    font-family: "poppins", serif;
+    font-size: 10px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.hashtag_content p{
+    background-color: rgba(254, 254, 254, 0.573);
+    color: black;
+    padding: 4px;
+    border-radius: 20px;
+}
+
+.mainbuttons{
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.advisory{
+    display: inline-flex;
+    align-items: center;
+    background-color: yellow;
+    padding: 7px 12px;
+    border: black dashed 2px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.78rem;
+}
+
+.advisory p{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.mainbuttons button{
+    padding: 10px 14px;
+    background-color: rgb(1, 1, 1);
+    border: black solid 1px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: 9rem;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1;
+    color: white;
+}
+
+.mainbuttons button svg,
+.mainbuttons button ion-icon {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    min-height: 20px;
+    font-size: 20px;
+    display: inline-block;
+    flex-shrink: 0;
+    vertical-align: middle;
+    transform: translateY(-1px);
+}
+
+.note_advisory {
+    margin-top: 18px;
+    width: 100%;
+}
+
+.note_container {
+    width: 100%;
+    max-width: 680px;
+}
+
+.alert_advisory {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 2px solid rgba(0, 0, 0, 0.12);
+    border-radius: 22px;
+    padding: 16px 18px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+}
+
+.avatar_wrap {
+    width: 84px;
+    height: 84px;
+    min-width: 84px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.avatar_wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.message {
+    flex: 1;
+}
+
+.message p {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: #111;
+}
+
+
+.survey_button button{
+    width: 13rem;
+    height: 2.1rem;
+    background-color: yellow;
+    border: black dashed 2px;
+    border-radius: 999px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.4s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.survey_button button ion-icon{
+    font-size: 20px;
+}
+
+.survey_button button:hover{
+    background-color: rgb(145, 255, 10);
+    color: white;
+    border: red dashed 2px;
+}
+
+.survey_button{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+
+.page2{
+    min-height: 100vh;
+    width: 100%;
+    padding: 60px 50px 80px;
+    background: #fffdf6;
+}
+
+.page2_features {
+    text-align: left;
+    margin-bottom: 50px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.page2_features h1{
+    font-family:  "Playfair Display", serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: clamp(2.7rem, 4vw, 4.2rem);
+    letter-spacing: -1.4px;
+    color: #161616;
+}
+
+.page2_features .subheader2 p {
+    margin-top: 10px;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.06rem;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+    color: #3d3d3d;
+    font-weight: 500;
+}
+
+.feature_row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 90px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature_row .feature_content {
+    margin-left: 0;
+}
+
+.feature_phone {
+    width: min(34vw, 360px);
+    aspect-ratio: 9 / 18.7;
+    flex-shrink: 0;
+}
+
+.feature_content {
+    flex: 1;
+    max-width: 520px;
+}
+
+.feature_tag {
+    display: inline-block;
+    background: #fff0a8;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 999px;
+    padding: 7px 12px;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
+
+.feature_content h2 {
+    font-family: "Poppins", sans-serif;
+    font-size: clamp(2rem, 2.8vw, 3rem);
+    line-height: 1.05;
+    letter-spacing: -1.2px;
+    margin-bottom: 16px;
+    font-weight: 800;
+    color: #121212;
+}
+
+.feature_content p {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.02rem;
+    line-height: 1.8;
+    color: #2a2a2a;
+    margin-bottom: 18px;
+    letter-spacing: -0.01em;
+}
+
+.feature_content ul {
+    list-style: disc;
+    padding-left: 22px;
+    font-family: "Poppins", sans-serif;
+    color: #1d1d1d;
+    line-height: 2;
+    font-weight: 500;
+}
+
+.subheader2 p {
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+}
+
+.more_container {
+    max-width: 1200px;
+    margin: 60px auto 0;
+    padding: 0 10px;
+}
+
+.container_extra {
+    margin-bottom: 24px;
+}
+
+.container_extra h2 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-weight: 800;
+    font-style:italic;
+    letter-spacing: -0.08em;
+    color: #111111;
+    line-height: 1.05;
+}
+
+.other_features {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(180px, 1fr));
+    gap: 18px;
+}
+
+.other_features > div {
+    background: linear-gradient(135deg, rgba(255,255,255,0.94), rgba(255,249,214,0.82));
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    border-radius: 22px;
+    padding: 18px 18px;
+    box-shadow: 0 12px 24px rgba(20, 20, 20, 0.06);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.other_features > div:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 32px rgba(20, 20, 20, 0.09);
+}
+
+.other_features p {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.96rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    letter-spacing: -0.02em;
+}
+
+.other_features ion-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    border-radius: 12px;
+    background: #fff8d9;
+    color: #111;
+    font-size: 18px;
+    box-shadow: inset 0 0 0 1px rgba(17,17,17,0.06);
+}
+
+
+/* Page 3: Minimalist style matching Page 2 */
+.page3 {
+    min-height: 100vh;
+    width: 100%;
+    padding: 60px 50px 90px;
+    background: #fffdf6;
+}
+
+.page3_container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header3 {
+    text-align: right;
+    margin-bottom: 46px;
+}
+
+.header3 h1 {
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: clamp(2.7rem, 4vw, 4.2rem);
+    letter-spacing: -1.4px;
+    color: #161616;
+}
+
+.header3 .subheader3 p {
+    margin-top: 10px;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.06rem;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+    color: #3d3d3d;
+    font-weight: 500;
+}
+
+/* 3-Column Minimalist Pillar Cards */
+.hiw_grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: stretch;
+}
+
+.hiw_card {
+    position: relative;
+    background: linear-gradient(135deg, rgba(255,255,255,0.94), rgba(255,249,214,0.82));
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    border-radius: 22px;
+    padding: 28px 26px;
+    box-shadow: 0 12px 24px rgba(20, 20, 20, 0.06);
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease, background 0.35s ease;
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.hiw_card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 32px rgba(20, 20, 20, 0.09);
+}
+
+.hiw_card.active {
+    background: #ffffff;
+    border-color: rgba(17, 17, 17, 0.28);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 38px rgba(20, 20, 20, 0.1);
+}
+
+/* Subtle Top Progress Line for Automated Animation */
+.hiw_card_progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: transparent;
+}
+
+.hiw_progress_fill {
+    display: block;
+    height: 100%;
+    width: 0%;
+    background: #161616;
+}
+
+.hiw_card.active .hiw_progress_fill {
+    animation: minimalProgress 5s linear forwards;
+}
+
+@keyframes minimalProgress {
+    from { width: 0%; }
+    to { width: 100%; }
+}
+
+.hiw_card_top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hiw_step_tag {
+    display: inline-block;
+    background: #fff0a8;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 999px;
+    padding: 5px 12px;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #121212;
+    transition: background 0.3s ease;
+}
+
+.hiw_card.active .hiw_step_tag {
+    background: yellow;
+    border-color: #111;
+}
+
+.hiw_card_top ion-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 12px;
+    background: #fff8d9;
+    color: #111;
+    font-size: 18px;
+    box-shadow: inset 0 0 0 1px rgba(17, 17, 17, 0.06);
+}
+
+.hiw_card h2 {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.45rem;
+    line-height: 1.2;
+    letter-spacing: -0.6px;
+    font-weight: 800;
+    color: #121212;
+}
+
+.hiw_item {
+    padding-top: 10px;
+    border-top: 1px solid rgba(17, 17, 17, 0.06);
+}
+
+.hiw_item h3 {
+    font-family: "Poppins", sans-serif;
+    font-size: 0.96rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+}
+
+.hiw_item p {
+    font-family: "Poppins", sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.68;
+    color: #2a2a2a;
+}
+
+/* How the Flow Connects: Minimalist 4-card row matching .other_features */
+.flow_container {
+    max-width: 1200px;
+    margin: 60px auto 0;
+    padding: 0;
+}
+
+.flow_steps_row {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(180px, 1fr));
+    gap: 18px;
+}
+
+.flow_card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.94), rgba(255,249,214,0.82));
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    border-radius: 22px;
+    padding: 20px 18px;
+    box-shadow: 0 12px 24px rgba(20, 20, 20, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+    cursor: pointer;
+}
+
+.flow_card:hover,
+.flow_card.active {
+    transform: translateY(-4px);
+    background: #ffffff;
+    border-color: rgba(17, 17, 17, 0.25);
+    box-shadow: 0 18px 32px rgba(20, 20, 20, 0.09);
+}
+
+.flow_card .flow_title {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+}
+
+.flow_card .flow_title ion-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    border-radius: 12px;
+    background: #fff8d9;
+    color: #111;
+    font-size: 18px;
+    box-shadow: inset 0 0 0 1px rgba(17,17,17,0.06);
+    transition: background 0.3s ease;
+}
+
+.flow_card.active .flow_title ion-icon {
+    background: yellow;
+}
+
+.flow_card .flow_desc {
+    font-family: "Poppins", sans-serif;
+    font-size: 0.88rem;
+    line-height: 1.62;
+    color: #2a2a2a;
+}
+
+@media (max-width: 980px) {
+    .hiw_grid {
+        grid-template-columns: 1fr;
+    }
+    .flow_steps_row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .page3 {
+        padding: 50px 22px;
+    }
+    .flow_steps_row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Share Popup Modal Styles matching uploaded screenshot */
+.share_modal_overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(17, 17, 17, 0.35);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    padding: 20px;
+}
+
+.share_modal_overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.share_modal_card {
+    position: relative;
+    background: #ffffff;
+    border: 2px solid #000000;
+    border-radius: 34px;
+    padding: 36px 38px 32px;
+    width: 100%;
+    max-width: 460px;
+    text-align: center;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.16);
+    transform: translateY(12px) scale(0.96);
+    transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.share_modal_overlay.open .share_modal_card {
+    transform: translateY(0) scale(1);
+}
+
+.share_modal_close {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(0, 0, 0, 0.15);
+    background: #fffdf6;
+    font-size: 20px;
+    line-height: 1;
+    color: #111;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.share_modal_close:hover {
+    background: yellow;
+    border-color: #000;
+    transform: scale(1.06);
+}
+
+.share_modal_title {
+    font-family: "Archivo Black", "Poppins", sans-serif;
+    font-size: 2.65rem;
+    font-weight: 900;
+    color: #000000;
+    letter-spacing: -1px;
+    margin-bottom: 24px;
+}
+
+.share_url_pill {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    background: linear-gradient(180deg, #fff878 0%, #fffef5 68%, #ffffff 100%);
+    border: 2px solid #000000;
+    border-radius: 999px;
+    padding: 13px 20px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-bottom: 28px;
+}
+
+.share_url_pill:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.share_url_pill input {
+    border: none;
+    background: transparent;
+    width: 100%;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.96rem;
+    font-weight: 500;
+    color: #000000;
+    outline: none;
+    cursor: pointer;
+    text-overflow: ellipsis;
+}
+
+.share_copy_badge {
+    background: #000000;
+    color: #ffffff;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.74rem;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 999px;
+    flex-shrink: 0;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.share_url_pill:hover .share_copy_badge {
+    background: yellow;
+    color: #000000;
+}
+
+.share_social_row {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 18px;
+    padding: 0 10px;
+}
+
+.share_social_btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #000000;
+    width: 58px;
+    height: 58px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: transform 0.22s ease, color 0.22s ease;
+}
+
+.share_social_btn svg {
+    width: 50px;
+    height: 50px;
+    display: block;
+}
+
+.share_social_btn:hover {
+    transform: translateY(-4px) scale(1.08);
+}
+
+.share_feedback_msg {
+    font-family: "Poppins", sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #161616;
+    min-height: 20px;
+    margin-top: 14px;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.share_feedback_msg.visible {
+    opacity: 1;
+}
+
+/* Page 4: Clean Humanized iOS-Style FAQ */
+.page4 {
+    width: 100%;
+    padding: 70px 50px 100px;
+    background: #fffdf6;
+}
+
+.page4_container {
+    max-width: 780px;
+    margin: 0 auto;
+}
+
+.header4 {
+    text-align: left;
+    margin-bottom: 28px;
+}
+
+.header4 h1 {
+    font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 2rem;
+    letter-spacing: -0.5px;
+    color: #111111;
+}
+
+.header4 p {
+    margin-top: 4px;
+    font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: #555555;
+}
+
+.faq_list {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.faq_item {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+    background: #ffffff;
+}
+
+.faq_item:last-child {
+    border-bottom: none;
+}
+
+.faq_question {
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    cursor: pointer;
+    text-align: left;
+    font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.96rem;
+    font-weight: 400;
+    color: #111111;
+}
+
+.faq_question:hover {
+    background: rgba(0, 0, 0, 0.015);
+}
+
+.faq_q_left {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.faq_q_left ion-icon {
+    font-size: 20px;
+    color: #111111;
+    flex-shrink: 0;
+}
+
+.faq_chevron {
+    font-size: 16px;
+    color: #777777;
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
+}
+
+.faq_item.active .faq_chevron {
+    transform: rotate(180deg);
+    color: #111111;
+}
+
+.faq_answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.28s ease, padding 0.25s ease;
+    padding: 0 22px 0 54px;
+}
+
+.faq_item.active .faq_answer {
+    max-height: 200px;
+    padding: 0 22px 18px 54px;
+}
+
+.faq_answer p {
+    font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.65;
+    color: #444444;
+}
+
+@media (max-width: 600px) {
+    .page4 {
+        padding: 50px 22px 80px;
+    }
+    .faq_answer,
+    .faq_item.active .faq_answer {
+        padding-left: 22px;
+    }
+}
+
+/* Survey Popup Modal: Minimalist style matching site design */
+.survey_modal_overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(17, 17, 17, 0.28);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    padding: 20px;
+}
+
+.survey_modal_overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.survey_modal_card {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 253, 244, 0.96) 65%, rgba(255, 249, 214, 0.9) 100%);
+    border: 1px solid rgba(17, 17, 17, 0.1);
+    border-radius: 24px;
+    padding: 32px 32px 28px;
+    box-shadow: 0 20px 48px rgba(20, 20, 20, 0.1);
+    transform: translateY(10px) scale(0.98);
+    transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.survey_modal_overlay.open .survey_modal_card {
+    transform: translateY(0) scale(1);
+}
+
+.survey_modal_close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    background: #fff8d9;
+    color: #111111;
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    font-size: 20px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.survey_modal_close:hover {
+    background: yellow;
+    transform: translateY(-1px);
+}
+
+.survey_modal_header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+    padding-right: 36px;
+}
+
+.survey_icon_badge {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 12px;
+    background: #fff8d9;
+    color: #111111;
+    font-size: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 0 0 1px rgba(17, 17, 17, 0.06);
+}
+
+.survey_modal_title {
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 1.65rem;
+    line-height: 1.18;
+    color: #161616;
+    letter-spacing: -0.4px;
+}
+
+.survey_modal_body {
+    font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.68;
+    color: #2a2a2a;
+    margin-bottom: 24px;
+}
+
+.survey_modal_action {
+    display: flex;
+    justify-content: center;
+}
+
+.survey_form_btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 26px;
+    background-color: yellow;
+    border: black dashed 2px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #111111;
+    transition: 0.3s ease;
+}
+
+.survey_form_btn ion-icon {
+    font-size: 18px;
+}
+
+.survey_form_btn:hover {
+    background-color: rgb(145, 255, 10);
+    color: white;
+    border: red dashed 2px;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+    .survey_modal_card {
+        padding: 24px 20px;
+    }
+    .survey_modal_title {
+        font-size: 1.4rem;
+    }
+}
+
+
+
+/* Creators of the SyncSphere: Minimalist ID Card Grid */
+.ending {
+    width: 100%;
+    padding: 60px 50px 100px;
+    background: #fffdf6;
+}
+
+.container_creator {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ending_header {
+    text-align: center;
+    margin-bottom: 42px;
+}
+
+.ending_header p {
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: clamp(2.3rem, 3.6vw, 3.4rem);
+    letter-spacing: -1px;
+    color: #161616;
+    line-height: 1.1;
+}
+
+.ending_header span {
+    display: block;
+    margin-top: 8px;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.96rem;
+    font-weight: 400;
+    color: #4a4a4a;
+}
+
+.avatar_creator {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(175px, 1fr));
+    gap: 22px;
+    width: 100%;
+}
+
+.creator_id_card {
+    position: relative;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 252, 235, 0.92) 60%, rgba(255, 248, 208, 0.85) 100%);
+    border: 1.5px solid rgba(17, 17, 17, 0.12);
+    border-radius: 24px;
+    padding: 16px 16px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 14px 30px rgba(20, 20, 20, 0.06);
+    transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+.creator_id_card:hover {
+    transform: translateY(-6px);
+    border-color: #111111;
+    box-shadow: 0 20px 38px rgba(20, 20, 20, 0.11);
+}
+
+/* Lanyard Punch Slot at Top of ID Card */
+.id_slot {
+    width: 38px;
+    height: 6px;
+    border-radius: 999px;
+    background: #fffdf6;
+    border: 1.5px solid rgba(17, 17, 17, 0.18);
+    margin-bottom: 12px;
+}
+
+.id_card_top {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    margin-bottom: 14px;
+    border-bottom: 1px dashed rgba(17, 17, 17, 0.12);
+}
+
+.id_org {
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 0.78rem;
+    color: #161616;
+}
+
+.id_num {
+    font-family: "Poppins", sans-serif;
+    font-size: 0.66rem;
+    font-weight: 700;
+    background: #fff0a8;
+    color: #111111;
+    padding: 2px 8px;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.id_avatar_frame {
+    width: 92px;
+    height: 92px;
+    border-radius: 20px;
+    background: #fff8d9;
+    border: 1.5px solid rgba(17, 17, 17, 0.1);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+    box-shadow: inset 0 0 0 2px #ffffff;
+}
+
+.id_avatar_frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.creator_id_card label {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #121212;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+}
+
+.id_role_badge {
+    display: inline-block;
+    background: yellow;
+    border: 1.5px dashed #111111;
+    border-radius: 999px;
+    padding: 3px 12px;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: #111111;
+    margin-bottom: 14px;
+}
+
+/* Minimalist Barcode Strip at Bottom of ID Card */
+.id_barcode {
+    width: 72%;
+    height: 12px;
+    opacity: 0.35;
+    background: repeating-linear-gradient(
+        90deg,
+        #111 0px,
+        #111 2px,
+        transparent 2px,
+        transparent 5px,
+        #111 5px,
+        #111 6px,
+        transparent 6px,
+        transparent 9px,
+        #111 9px,
+        #111 12px,
+        transparent 12px,
+        transparent 14px
+    );
+}
+
+@media (max-width: 980px) {
+    .avatar_creator {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .ending {
+        padding: 50px 22px 80px;
+    }
+    .avatar_creator {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+}
+
+
+.lastone {
+    padding: clamp(36px, 6vw, 80px) 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.88rem;
+    color: rgba(128, 128, 128, 0.72);
+    background: #fffdf6;
+}
+
+/* Global Fluid Scroll Reveal Animations (GPU-Accelerated, Zero Input Lag) */
+.scroll_reveal {
+    opacity: 0;
+    transform: translate3d(0, 26px, 0);
+    transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
+                transform 0.65s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms);
+    backface-visibility: hidden;
+}
+
+.scroll_reveal.reveal_left {
+    transform: translate3d(-26px, 0, 0);
+}
+
+.scroll_reveal.reveal_right {
+    transform: translate3d(26px, 0, 0);
+}
+
+.scroll_reveal.in_view {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .scroll_reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
+/* ==========================================================================
+   Comprehensive Multi-Screen Responsive Breakpoints
+   ========================================================================== */
+
+/* 1. Compact Laptops & Large Tablets (<= 1150px) */
+@media (max-width: 1150px) {
+    .page1 {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 42px;
+        padding: 115px 36px 50px;
+    }
+    .typography1 {
+        max-width: 640px;
+        width: 100%;
+        align-self: center;
+        margin-top: 10px;
+    }
+    .subheader1 {
+        margin: 0 auto;
+        max-width: 540px;
+    }
+    .hashtag_content,
+    .mainbuttons {
+        justify-content: center;
+    }
+    .note_container {
+        margin: 0 auto;
+    }
+    .alert_advisory {
+        text-align: left;
+    }
+    .page1 .image_slider {
+        width: min(58vw, 330px);
+        margin: 0 auto;
+    }
+    .feature_row {
+        gap: 50px;
+    }
+    .other_features {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .avatar_creator {
+        grid-template-columns: repeat(3, minmax(170px, 1fr));
+    }
+}
+
+/* 2. Tablets & Split-Screen Windows (<= 960px) */
+@media (max-width: 960px) {
+    .container_nav {
+        padding: 10px 22px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(255, 253, 246, 0.85);
+        border-bottom: 1px solid rgba(17, 17, 17, 0.06);
+    }
+    .Scheduly_logo img {
+        width: 48px;
+        height: 48px;
+    }
+    .Scheduly_logo h2 {
+        font-size: 1.3rem;
+    }
+    .ios_menu_toggle {
+        display: inline-flex;
+    }
+    .navbar_content {
+        position: absolute;
+        top: calc(100% + 10px);
+        right: 20px;
+        width: min(88vw, 310px);
+        background: linear-gradient(145deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 252, 235, 0.96) 65%, rgba(255, 248, 208, 0.94) 100%);
+        border: 1.5px solid rgba(17, 17, 17, 0.14);
+        border-radius: 24px;
+        padding: 14px;
+        box-shadow: 0 22px 48px rgba(17, 17, 17, 0.14);
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 6px;
+        opacity: 0;
+        pointer-events: none;
+        transform-origin: top right;
+        transform: translateY(-8px) scale(0.95);
+        transition: opacity 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+                    transform 0.26s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .navbar_content.menu_open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0) scale(1);
+    }
+    .navbar_content a {
+        width: 100%;
+        justify-content: flex-start;
+        padding: 11px 14px;
+        border-radius: 14px;
+        font-size: 0.92rem;
+        font-weight: 500;
+        color: #121212;
+        transition: background 0.2s ease;
+    }
+    .navbar_content a:hover {
+        background: #fff8d9;
+    }
+    .navbar_content .Instagram_button {
+        width: 100%;
+        justify-content: flex-start;
+        background: rgba(255, 248, 217, 0.75);
+        border: 1px solid rgba(17, 17, 17, 0.08);
+        padding: 10px 14px;
+        min-height: 42px;
+        border-radius: 14px;
+    }
+    .navbar_content button {
+        width: 100%;
+        margin-top: 4px;
+        padding: 12px 14px;
+        font-size: 0.88rem;
+        border-radius: 15px;
+        justify-content: center;
+    }
+    .page1 {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 42px;
+        padding: 104px 28px 60px;
+    }
+    .typography1 {
+        max-width: 640px;
+        width: 100%;
+        align-self: center;
+        margin-top: 10px;
+    }
+    .subheader1 {
+        margin: 0 auto;
+        max-width: 540px;
+    }
+    .hashtag_content,
+    .mainbuttons {
+        justify-content: center;
+    }
+    .note_container {
+        margin: 0 auto;
+    }
+    .alert_advisory {
+        text-align: left;
+    }
+    .image_slider,
+    .feature_phone {
+        width: min(58vw, 330px);
+        margin: 0 auto;
+    }
+    .page2,
+    .page3,
+    .page4,
+    .ending {
+        padding: 64px 28px 76px;
+    }
+    .page2_features,
+    .header3,
+    .container_extra {
+        text-align: center;
+    }
+    .feature_row {
+        flex-direction: column;
+        gap: 42px;
+    }
+    .feature_content {
+        max-width: 620px;
+        width: 100%;
+        text-align: left;
+    }
+    .hiw_grid {
+        grid-template-columns: 1fr;
+        max-width: 640px;
+        margin: 0 auto;
+    }
+    .flow_steps_row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 3. Mobile Phones (<= 640px) */
+@media (max-width: 640px) {
+    .container_nav {
+        padding: 10px 18px;
+    }
+    .Scheduly_logo img {
+        width: 42px;
+        height: 42px;
+    }
+    .Scheduly_logo h2 {
+        font-size: 1.2rem;
+    }
+    .navbar_content {
+        right: 16px;
+        width: calc(100vw - 32px);
+        max-width: 320px;
+    }
+    .page1 {
+        padding: 96px 18px 48px;
+        gap: 34px;
+    }
+    .header1 p {
+        font-size: clamp(2.35rem, 10.2vw, 3.3rem);
+        line-height: 0.96;
+        letter-spacing: -1.5px;
+    }
+    .subheader1 {
+        font-size: 0.92rem;
+        line-height: 1.62;
+    }
+    .mainbuttons {
+        gap: 10px;
+    }
+    .mainbuttons button {
+        width: auto;
+        min-width: 8.2rem;
+        padding: 10px 14px;
+        font-size: 0.88rem;
+    }
+    .alert_advisory {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 16px;
+    }
+    .avatar_wrap {
+        width: 64px;
+        height: 64px;
+        min-width: 64px;
+        border-radius: 14px;
+    }
+    .image_slider,
+    .feature_phone {
+        width: min(82vw, 290px);
+        border-radius: 38px;
+        padding: 10px;
+    }
+    .slide_track {
+        inset: 10px;
+        border-radius: 28px;
+    }
+    .slide_track img {
+        inset: 0;
+        border-radius: 28px;
+    }
+    .page2,
+    .page3,
+    .page4,
+    .ending {
+        padding: 48px 18px 64px;
+    }
+    .page2_features,
+    .header3,
+    .header4,
+    .ending_header {
+        margin-bottom: 30px;
+    }
+    .feature_content h2 {
+        font-size: 1.75rem;
+    }
+    .feature_content p,
+    .feature_content ul {
+        font-size: 0.92rem;
+    }
+    .other_features,
+    .flow_steps_row {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+    .hiw_card {
+        padding: 22px 20px;
+    }
+    .faq_question {
+        padding: 16px 18px;
+        font-size: 0.9rem;
+    }
+    .avatar_creator {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+    .share_modal_card {
+        padding: 28px 20px 24px;
+        border-radius: 26px;
+    }
+    .share_modal_title {
+        font-size: 2rem;
+        margin-bottom: 18px;
+    }
+    .share_url_pill {
+        padding: 10px 14px;
+        margin-bottom: 22px;
+    }
+    .share_url_pill input {
+        font-size: 0.84rem;
+    }
+    .share_social_btn {
+        width: 46px;
+        height: 46px;
+    }
+    .share_social_btn svg {
+        width: 38px;
+        height: 38px;
+    }
+}
+
+/* 4. Small Phones (<= 400px) */
+@media (max-width: 400px) {
+    .avatar_creator {
+        grid-template-columns: 1fr;
+        max-width: 260px;
+        margin: 0 auto;
+    }
+    .mainbuttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    .mainbuttons button {
+        width: 100%;
+        max-width: 220px;
+    }
+}
