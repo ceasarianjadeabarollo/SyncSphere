@@ -155,7 +155,7 @@ html, body{
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 110px;
+    gap: clamp(110px, 12vw, 240px);
     padding: 120px 50px 40px;
     background: #ffffff;
     background: linear-gradient(339deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 34%, rgba(255, 252, 140, 1) 100%);
@@ -198,6 +198,10 @@ html, body{
     border: 2px solid rgba(255, 255, 255, 0.65);
     overflow: hidden;
     padding: 12px;
+}
+
+.page1 .image_slider {
+    flex-shrink: 0;
 }
 .image_slider::before,
 .image_slider::after {
@@ -408,6 +412,7 @@ html, body{
     display: flex;
     justify-content: center;
     padding: 20px;
+    gap: 15px;
 }
 
 
@@ -1748,9 +1753,12 @@ html, body{
     }
     .image_slider,
     .feature_phone {
-        width: min(82vw, 290px);
+        width: min(88vw, 340px);
         border-radius: 38px;
         padding: 10px;
+    }
+    .page1 .image_slider {
+        width: min(88vw, 340px);
     }
     .slide_track {
         inset: 10px;
