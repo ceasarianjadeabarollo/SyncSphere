@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const url = getShareableUrl();
         try {
             await navigator.clipboard.writeText(url);
-        } catch {
+        } catch (e) {
             if (shareUrlInput) {
                 shareUrlInput.select();
                 document.execCommand("copy");
@@ -514,7 +514,7 @@ document.addEventListener("DOMContentLoaded", () => {
             model = "OnePlus Phone";
         } else if (/Android/i.test(ua)) {
             brand = "Android";
-            const m = ua.match(/Android[^;]+;\s*([^;)]+)/i);
+            const m = ua.match(/Android[^;]+;\s*([^;\)]+)/i);
             model = m && m[1] ? m[1].trim() : "Smartphone";
         } else if (/Macintosh|Mac OS X/i.test(ua)) {
             brand = "Apple";
@@ -808,8 +808,16 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // 3. IF THIS DEVICE HAS ALREADY VISITED BEFORE:
-        // STRICTLY PREVENT DUPLICATES! Never call increment!
+        // STRICTLY PREVENT DUPLICATES! Never call increment & suppress welcome modal!
         if (isKnownDuplicate) {
+            const welcomeOverlay = document.getElementById("welcome-modal-overlay");
+            if (welcomeOverlay) {
+                welcomeOverlay.style.display = "none";
+                welcomeOverlay.classList.add("dismissed");
+                document.body.classList.remove("welcome_modal_active");
+            }
+            setPersistentFlag("syncsphere_welcome_seen");
+
             const latestTotal = await getGlobalViewsCount();
             const finalCount = latestTotal !== null ? latestTotal : (cachedCount || 1);
             try {
@@ -870,6 +878,319 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     initRealTimeViews();
+
+    // 9. Required Non-Cancelable Welcome Gateway Modal (ID Card Badge Style)
+    function initWelcomeModal() {
+        const welcomeOverlay = document.getElementById("welcome-modal-overlay");
+        const welcomeCard = document.getElementById("welcome-badge-card");
+        const slide0 = document.getElementById("welcome-slide-0");
+        const slide1 = document.getElementById("welcome-slide-1");
+        const bar0 = document.getElementById("welcome-bar-0");
+        const bar1 = document.getElementById("welcome-bar-1");
+        const welcomePrevBtn = document.getElementById("welcome-prev-btn");
+        const welcomeNextBtn = document.getElementById("welcome-next-btn");
+        const welcomeTimerPill = document.getElementById("welcome-timer-pill");
+        const confettiCanvas = document.getElementById("welcome-confetti-canvas");
+
+        if (!welcomeOverlay || !welcomeCard || !slide0 || !slide1) return;
+
+        const device = analyzePhoneDevice();
+        const storageKey = `syncsphere_view_recorded_${device.serial}`;
+        
+        // CHECK IF THIS DEVICE HAS ALREADY SEEN OR VIEWED THE PAGE
+        const hasAlreadySeen = getPersistentFlag("syncsphere_welcome_seen") || 
+                               getPersistentFlag(storageKey) || 
+                               getPersistentFlag("syncsphere_global_view_recorded");
+
+        if (hasAlreadySeen) {
+            // ALREADY SEEN: Do NOT show the modal at all!
+            welcomeOverlay.style.display = "none";
+            welcomeOverlay.classList.add("dismissed");
+            document.body.classList.remove("welcome_modal_active");
+            return;
+        }
+
+        let currentSlide = 0;
+        let autoExitTimer = null;
+        let countdownInterval = null;
+
+        // Celebratory Confetti Engine for Zaider's Birthday
+        function launchConfetti() {
+            if (!confettiCanvas) return;
+            const ctx = confettiCanvas.getContext("2d");
+            if (!ctx) return;
+
+            confettiCanvas.width = window.innerWidth;
+            confettiCanvas.height = window.innerHeight;
+
+            const particles = [];
+            const colors = ["#ffd700", "#00e054", "#ff4757", "#38bdf8", "#a855f7", "#ff9f43", "#ffffff"];
+            const count = Math.min(130, Math.floor(window.innerWidth / 3.5));
+
+            for (let i = 0; i < count; i++) {
+                particles.push({
+                    x: window.innerWidth * (0.35 + Math.random() * 0.3),
+                    y: window.innerHeight * (0.4 + Math.random() * 0.2),
+                    vx: (Math.random() - 0.5) * 16,
+                    vy: (Math.random() - 0.8) * 18,
+                    size: Math.random() * 8 + 5,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    rotation: Math.random() * 360,
+                    rotationSpeed: (Math.random() - 0.5) * 14,
+                    gravity: 0.36 + Math.random() * 0.22,
+                    opacity: 1
+                });
+            }
+
+            let animId;
+            const startTime = performance.now();
+
+            function render(now) {
+                const elapsed = now - startTime;
+                ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+
+                let alive = false;
+                particles.forEach((p) => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    p.vy += p.gravity;
+                    p.vx *= 0.98;
+                    p.rotation += p.rotationSpeed;
+
+                    if (elapsed > 2000) {
+                        p.opacity = Math.max(0, 1 - (elapsed - 2000) / 1800);
+                    }
+
+                    if (p.opacity > 0 && p.y < confettiCanvas.height + 40) {
+                        alive = true;
+                        ctx.save();
+                        ctx.translate(p.x, p.y);
+                        ctx.rotate((p.rotation * Math.PI) / 180);
+                        ctx.globalAlpha = p.opacity;
+                        ctx.fillStyle = p.color;
+                        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.65);
+                        ctx.restore();
+                    }
+                });
+
+                if (alive && elapsed < 4200) {
+                    animId = requestAnimationFrame(render);
+                } else {
+                    ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+                    cancelAnimationFrame(animId);
+                }
+            }
+
+            animId = requestAnimationFrame(render);
+        }
+
+        // 5-Second Auto-Exit Timer with live countdown badge
+        function start5SecondCountdown() {
+            clearCountdown();
+            let secondsLeft = 5;
+
+            if (welcomeTimerPill) {
+                welcomeTimerPill.textContent = `Entering in ${secondsLeft}s...`;
+                welcomeTimerPill.style.display = "inline-flex";
+            }
+
+            countdownInterval = setInterval(() => {
+                secondsLeft--;
+                if (welcomeTimerPill && secondsLeft > 0) {
+                    welcomeTimerPill.textContent = `Entering in ${secondsLeft}s...`;
+                }
+            }, 1000);
+
+            autoExitTimer = setTimeout(() => {
+                dismissModal();
+            }, 5000);
+        }
+
+        function clearCountdown() {
+            if (autoExitTimer) clearTimeout(autoExitTimer);
+            if (countdownInterval) clearInterval(countdownInterval);
+            autoExitTimer = null;
+            countdownInterval = null;
+            if (welcomeTimerPill) {
+                welcomeTimerPill.style.display = "none";
+            }
+        }
+
+        function updateSlide(targetIndex) {
+            currentSlide = targetIndex === 1 ? 1 : 0;
+
+            if (currentSlide === 0) {
+                // Show Card 1 (Hello Syncsphere Fam!)
+                clearCountdown();
+                slide1.classList.remove("active", "prev");
+                slide0.classList.remove("prev");
+                slide0.classList.add("active");
+
+                if (bar0) bar0.classList.add("active");
+                if (bar1) bar1.classList.remove("active");
+
+                if (welcomePrevBtn) {
+                    welcomePrevBtn.setAttribute("disabled", "true");
+                }
+                if (welcomeNextBtn) {
+                    welcomeNextBtn.classList.remove("enter_ready");
+                    welcomeNextBtn.setAttribute("title", "Next card");
+                    welcomeNextBtn.setAttribute("aria-label", "Next card");
+                }
+            } else {
+                // Show Card 2 (Zaider Birthday Announcement)
+                slide0.classList.remove("active");
+                slide0.classList.add("prev");
+                slide1.classList.remove("prev");
+                slide1.classList.add("active");
+
+                if (bar0) bar0.classList.remove("active");
+                if (bar1) bar1.classList.add("active");
+
+                if (welcomePrevBtn) {
+                    welcomePrevBtn.removeAttribute("disabled");
+                }
+                if (welcomeNextBtn) {
+                    welcomeNextBtn.classList.add("enter_ready");
+                    welcomeNextBtn.setAttribute("title", "Enter SyncSphere Landing Page");
+                    welcomeNextBtn.setAttribute("aria-label", "Enter SyncSphere Landing Page");
+                }
+
+                // 1. POP CELEBRATORY CONFETTI!
+                launchConfetti();
+
+                // 2. START 5-SECOND AUTO-EXIT COUNTDOWN!
+                start5SecondCountdown();
+            }
+        }
+
+        function dismissModal() {
+            clearCountdown();
+            welcomeOverlay.classList.add("dismissed");
+            document.body.classList.remove("welcome_modal_active");
+
+            // PERMANENTLY REMEMBER THIS DEVICE HAS VIEWED IT (So it NEVER pops up again on revisit)
+            setPersistentFlag("syncsphere_welcome_seen");
+            setPersistentFlag(storageKey);
+            setPersistentFlag("syncsphere_global_view_recorded");
+
+            // Clean up overlay from accessibility tree after animation
+            setTimeout(() => {
+                welcomeOverlay.style.display = "none";
+            }, 450);
+        }
+
+        // Prev Button (<)
+        if (welcomePrevBtn) {
+            welcomePrevBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                if (currentSlide > 0) {
+                    updateSlide(0);
+                }
+            });
+        }
+
+        // Next Button (>)
+        if (welcomeNextBtn) {
+            welcomeNextBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                if (currentSlide === 0) {
+                    updateSlide(1); // Switch to Card 2!
+                } else {
+                    dismissModal(); // On Card 2, enter landing page!
+                }
+            });
+        }
+
+        // Progress Bar Direct Clicks
+        if (bar0) {
+            bar0.addEventListener("click", (e) => {
+                e.stopPropagation();
+                updateSlide(0);
+            });
+        }
+        if (bar1) {
+            bar1.addEventListener("click", (e) => {
+                e.stopPropagation();
+                updateSlide(1);
+            });
+        }
+
+        // Non-Cancelable Enforcement:
+        // Clicking outside (on backdrop) does NOT dismiss! Card playfully wiggles to indicate required action.
+        welcomeOverlay.addEventListener("click", (e) => {
+            if (e.target === welcomeOverlay) {
+                welcomeCard.classList.remove("wiggle_locked");
+                void welcomeCard.offsetWidth; // Trigger reflow
+                welcomeCard.classList.add("wiggle_locked");
+                setTimeout(() => {
+                    welcomeCard.classList.remove("wiggle_locked");
+                }, 480);
+            }
+        });
+
+        // Prevent ESC key from closing, allow Arrow and Enter navigation
+        window.addEventListener("keydown", (e) => {
+            if (!welcomeOverlay.classList.contains("dismissed")) {
+                if (e.key === "Escape") {
+                    e.preventDefault();
+                    welcomeCard.classList.remove("wiggle_locked");
+                    void welcomeCard.offsetWidth;
+                    welcomeCard.classList.add("wiggle_locked");
+                    setTimeout(() => {
+                        welcomeCard.classList.remove("wiggle_locked");
+                    }, 480);
+                } else if (e.key === "ArrowRight" || e.key === "Enter") {
+                    e.preventDefault();
+                    if (currentSlide === 0) {
+                        updateSlide(1);
+                    } else {
+                        dismissModal();
+                    }
+                } else if (e.key === "ArrowLeft") {
+                    e.preventDefault();
+                    if (currentSlide > 0) {
+                        updateSlide(0);
+                    }
+                }
+            }
+        });
+
+        // Touch Swipe Support (Native mobile story feeling)
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        welcomeCard.addEventListener("touchstart", (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        welcomeCard.addEventListener("touchend", (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            const diffX = touchStartX - touchEndX;
+            if (Math.abs(diffX) > 36) {
+                if (diffX > 0) {
+                    // Swiped Left -> Go Next or Dismiss on Card 2
+                    if (currentSlide === 0) {
+                        updateSlide(1);
+                    } else {
+                        dismissModal();
+                    }
+                } else {
+                    // Swiped Right -> Go Prev
+                    if (currentSlide > 0) {
+                        updateSlide(0);
+                    }
+                }
+            }
+        }, { passive: true });
+
+        // Initialize state on Card 1
+        updateSlide(0);
+    }
+
+    initWelcomeModal();
 });
 
 

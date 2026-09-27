@@ -11,7 +11,57 @@
     <link rel="stylesheet" href="landaingpage.css">
     <title>SyncSphere</title>
 </head>
-<body>
+<body class="welcome_modal_active">
+
+    <!-- Required Non-Cancelable Welcome Gateway Modal -->
+    <aside class="welcome_modal_overlay" id="welcome-modal-overlay" role="dialog" aria-modal="true" aria-label="Welcome to SyncSphere">
+        <!-- Confetti Canvas for Birthday Celebration -->
+        <canvas id="welcome-confetti-canvas" class="welcome_confetti_canvas"></canvas>
+
+        <div class="welcome_badge_card" id="welcome-badge-card">
+            <!-- Lanyard Slot Punch at Top -->
+            <div class="badge_lanyard_slot" aria-hidden="true"></div>
+
+            <!-- Slides Viewport -->
+            <div class="welcome_slides_viewport">
+                <!-- Slide 1: Hello Syncsphere Fam! -->
+                <div class="welcome_slide active" id="welcome-slide-0" data-slide="0">
+                    <h1 class="welcome_fam_title">
+                        <em>Hello Syncsphere<br>Fam!</em>
+                    </h1>
+                    <p class="welcome_fam_desc">
+                        We’re building something big with SyncSphere, and we want you to help shape it! Drop your thoughts, tell us your workflow struggles, and help us make this app actually work for you. Theres a survey button waiting for you, Every word counts!
+                    </p>
+                </div>
+
+                <!-- Slide 2: Zaider Birthday Announcement -->
+                <div class="welcome_slide" id="welcome-slide-1" data-slide="1">
+                    <div class="welcome_avatar_wrap">
+                        <img src="assets/creator/Zaider.png" alt="Zaider - Founder" class="welcome_avatar_img">
+                    </div>
+                    <h2 class="welcome_founder_name">zaider</h2>
+                    <p class="welcome_founder_sub">It's our founder's birthday today!</p>
+                    <span class="welcome_timer_pill" id="welcome-timer-pill">Entering in 5s...</span>
+                </div>
+            </div>
+
+            <!-- Footer: Progress Bars + Nav Buttons -->
+            <div class="welcome_footer">
+                <div class="welcome_progress_row" role="tablist" aria-label="Card progress">
+                    <button type="button" class="welcome_bar active" id="welcome-bar-0" data-go-slide="0" aria-label="Card 1"></button>
+                    <button type="button" class="welcome_bar" id="welcome-bar-1" data-go-slide="1" aria-label="Card 2"></button>
+                </div>
+                <div class="welcome_nav_row">
+                    <button type="button" class="welcome_nav_btn prev_btn" id="welcome-prev-btn" aria-label="Previous card" disabled>
+                        <ion-icon name="chevron-back-outline"></ion-icon>
+                    </button>
+                    <button type="button" class="welcome_nav_btn next_btn" id="welcome-next-btn" aria-label="Next card" title="Next card">
+                        <ion-icon name="chevron-forward-outline"></ion-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </aside>
 
     <div class="container_nav" id="container-nav">
          <div class="Scheduly_logo">
@@ -86,7 +136,7 @@
             </div>
          </div>
          <div class="survey_button">
-            <button id="survey-open-btn"><ion-icon name="ios-document"></ion-icon></ion-icon>Survey Here!</button>
+            <button id="survey-open-btn"><ion-icon name="ios-document"></ion-icon>Survey Here!</button>
             <!--idk--
             <button id="experience_btn">Share your experience</button>
             <!--end of idk-->
