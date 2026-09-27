@@ -808,16 +808,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // 3. IF THIS DEVICE HAS ALREADY VISITED BEFORE:
-        // STRICTLY PREVENT DUPLICATES! Never call increment & suppress welcome modal!
+        // STRICTLY PREVENT DUPLICATE VIEW COUNTS.
         if (isKnownDuplicate) {
-            const welcomeOverlay = document.getElementById("welcome-modal-overlay");
-            if (welcomeOverlay) {
-                welcomeOverlay.style.display = "none";
-                welcomeOverlay.classList.add("dismissed");
-                document.body.classList.remove("welcome_modal_active");
-            }
-            setPersistentFlag("syncsphere_welcome_seen");
-
             const latestTotal = await getGlobalViewsCount();
             const finalCount = latestTotal !== null ? latestTotal : (cachedCount || 1);
             try {
@@ -877,8 +869,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    initRealTimeViews();
-
     // 9. Required Non-Cancelable Welcome Gateway Modal (ID Card Badge Style)
     function initWelcomeModal() {
         const welcomeOverlay = document.getElementById("welcome-modal-overlay");
@@ -893,22 +883,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const confettiCanvas = document.getElementById("welcome-confetti-canvas");
 
         if (!welcomeOverlay || !welcomeCard || !slide0 || !slide1) return;
-
-        const device = analyzePhoneDevice();
-        const storageKey = `syncsphere_view_recorded_${device.serial}`;
-        
-        // CHECK IF THIS DEVICE HAS ALREADY SEEN OR VIEWED THE PAGE
-        const hasAlreadySeen = getPersistentFlag("syncsphere_welcome_seen") || 
-                               getPersistentFlag(storageKey) || 
-                               getPersistentFlag("syncsphere_global_view_recorded");
-
-        if (hasAlreadySeen) {
-            // ALREADY SEEN: Do NOT show the modal at all!
-            welcomeOverlay.style.display = "none";
-            welcomeOverlay.classList.add("dismissed");
-            document.body.classList.remove("welcome_modal_active");
-            return;
-        }
 
         let currentSlide = 0;
         let autoExitTimer = null;
@@ -1034,6 +1008,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
                 if (welcomeNextBtn) {
                     welcomeNextBtn.classList.remove("enter_ready");
+                    welcomeNextBtn.removeAttribute("disabled");
                     welcomeNextBtn.setAttribute("title", "Next card");
                     welcomeNextBtn.setAttribute("aria-label", "Next card");
                 }
@@ -1051,9 +1026,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     welcomePrevBtn.removeAttribute("disabled");
                 }
                 if (welcomeNextBtn) {
-                    welcomeNextBtn.classList.add("enter_ready");
-                    welcomeNextBtn.setAttribute("title", "Enter SyncSphere Landing Page");
-                    welcomeNextBtn.setAttribute("aria-label", "Enter SyncSphere Landing Page");
+                    welcomeNextBtn.classList.remove("enter_ready");
+                    welcomeNextBtn.setAttribute("disabled", "true");
+                    welcomeNextBtn.setAttribute("title", "Please wait to enter SyncSphere");
+                    welcomeNextBtn.setAttribute("aria-label", "Please wait to enter SyncSphere");
                 }
 
                 // 1. POP CELEBRATORY CONFETTI!
@@ -1068,11 +1044,6 @@ document.addEventListener("DOMContentLoaded", () => {
             clearCountdown();
             welcomeOverlay.classList.add("dismissed");
             document.body.classList.remove("welcome_modal_active");
-
-            // PERMANENTLY REMEMBER THIS DEVICE HAS VIEWED IT (So it NEVER pops up again on revisit)
-            setPersistentFlag("syncsphere_welcome_seen");
-            setPersistentFlag(storageKey);
-            setPersistentFlag("syncsphere_global_view_recorded");
 
             // Clean up overlay from accessibility tree after animation
             setTimeout(() => {
@@ -1098,8 +1069,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 e.stopPropagation();
                 if (currentSlide === 0) {
                     updateSlide(1); // Switch to Card 2!
-                } else {
-                    dismissModal(); // On Card 2, enter landing page!
                 }
             });
         }
@@ -1146,8 +1115,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     e.preventDefault();
                     if (currentSlide === 0) {
                         updateSlide(1);
-                    } else {
-                        dismissModal();
                     }
                 } else if (e.key === "ArrowLeft") {
                     e.preventDefault();
@@ -1174,8 +1141,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     // Swiped Left -> Go Next or Dismiss on Card 2
                     if (currentSlide === 0) {
                         updateSlide(1);
-                    } else {
-                        dismissModal();
                     }
                 } else {
                     // Swiped Right -> Go Prev
@@ -1191,6 +1156,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     initWelcomeModal();
+    initRealTimeViews();
 });
 
 
