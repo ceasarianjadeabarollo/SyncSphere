@@ -283,6 +283,126 @@ html, body{
     flex-wrap: wrap;
 }
 
+.web_views {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.views_pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(255, 250, 222, 0.94));
+    padding: 6px 14px;
+    border: 2px solid #111111;
+    border-radius: 999px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    user-select: none;
+}
+
+.views_pill:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.09);
+    background: #ffffff;
+}
+
+.views_live_dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+    animation: pulseLiveDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseLiveDot {
+    0%, 100% {
+        transform: scale(0.9);
+        opacity: 0.8;
+        box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+    }
+    50% {
+        transform: scale(1.15);
+        opacity: 1;
+        box-shadow: 0 0 0 5px rgba(16, 185, 129, 0.35);
+    }
+}
+
+.views_pill ion-icon {
+    font-size: 16px;
+    color: #111111;
+}
+
+.views_number {
+    font-family: "Archivo Black", "Poppins", sans-serif;
+    font-size: 0.88rem;
+    color: #111111;
+    line-height: 1;
+    letter-spacing: -0.3px;
+    transition: transform 0.2s ease;
+}
+
+.views_label {
+    font-family: "Poppins", sans-serif;
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: #333333;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.device_verified_tooltip {
+    position: absolute;
+    top: calc(100% + 7px);
+    left: 0;
+    background: rgba(18, 18, 18, 0.92);
+    color: #ffffff;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    white-space: nowrap;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-4px);
+    transition: opacity 0.22s ease, transform 0.22s ease;
+    z-index: 25;
+}
+
+.device_verified_tooltip::before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 20px;
+    border-width: 4px;
+    border-style: solid;
+    border-color: transparent transparent rgba(18, 18, 18, 0.92) transparent;
+}
+
+.web_views:hover .device_verified_tooltip,
+.web_views.show_tip .device_verified_tooltip {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.device_info_icon {
+    display: inline-flex;
+    align-items: center;
+    color: yellow;
+    font-size: 14px;
+}
+
 .advisory{
     display: inline-flex;
     align-items: center;
@@ -1738,6 +1858,21 @@ html, body{
         min-width: 8.2rem;
         padding: 10px 14px;
         font-size: 0.88rem;
+    }
+    .device_verified_tooltip {
+        left: 50%;
+        transform: translateX(-50%) translateY(-4px);
+        max-width: 86vw;
+        white-space: normal;
+        text-align: center;
+    }
+    .device_verified_tooltip::before {
+        left: 50%;
+        margin-left: -4px;
+    }
+    .web_views:hover .device_verified_tooltip,
+    .web_views.show_tip .device_verified_tooltip {
+        transform: translateX(-50%) translateY(0);
     }
     .alert_advisory {
         flex-direction: column;

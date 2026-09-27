@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Gilda+Display&family=Instrument+Serif:ital@0;1&family=Outfit:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"> 
@@ -51,12 +52,25 @@
                 </div>
          </div>
          <div class="mainbuttons">
+            <!--future update
             <button><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-google-play" viewBox="0 0 16 16">
                 <path d="M14.222 9.374c1.037-.61 1.037-2.137 0-2.748L11.528 5.04 8.32 8l3.207 2.96zm-3.595 2.116L7.583 8.68 1.03 14.73c.201 1.029 1.36 1.61 2.303 1.055zM1 13.396V2.603L6.846 8zM1.03 1.27l6.553 6.05 3.044-2.81L3.333.215C2.39-.341 1.231.24 1.03 1.27"/>
                     </svg>Play store</button>
                 <button><ion-icon name="logo-apple" ></ion-icon>App store</button>
+                -->
+                <div class="web_views" id="web-views-badge" title="Real-time verified views (Unique device tracking enabled)">
+                    <div class="views_pill">
+                        <ion-icon name="eye-outline"></ion-icon>
+                        <span class="views_number" id="view-count-number">0</span>
+                        <span class="views_label">Web views</span>
+                    </div>
+                    <div class="device_verified_tooltip" id="device-verified-tooltip">
+                        <span class="device_info_icon"><ion-icon name="ios-phone-portrait"></ion-icon></span>
+                        <span class="device_info_text" id="device-info-text">Analyzing phone...</span>
+                    </div>
+                </div>
                 <div class="advisory">
-                    <p><ion-icon name="arrow-back"></ion-icon>Available Soon</p>
+                    <p><ion-icon name="warning"></ion-icon>Play Store and App Store is available soon!</p>
                 </div>
          </div>
          <div class="note_advisory">
@@ -123,16 +137,16 @@
             </div>
             <div class="other_features">
                 <div class="Device_Sync">
-                    <p><ion-icon name="ios-cloud-done"></ion-icon>Device Syncing</p>
+                    <p><ion-icon name="cloud-done"></ion-icon>Device Syncing</p>
                 </div>
                 <div class="Reminders">
-                    <p><ion-icon name="ios-notifications"></ion-icon>Notification Reminder</p>
+                    <p><ion-icon name="notifications"></ion-icon>Notification Reminder</p>
                 </div>
                 <div class="Notes">
-                    <p><ion-icon name="ios-folder-open"></ion-icon>Notes</p>
+                    <p><ion-icon name="folder-open"></ion-icon>Notes</p>
                 </div>
                 <div class="nfc">
-                    <p><ion-icon name="ios-card"></ion-icon>NFC Schedule Writer</p>
+                    <p><ion-icon name="card"></ion-icon>NFC Schedule Writer</p>
                 </div>
             </div>
         </div>
@@ -153,7 +167,7 @@
                     <div class="hiw_card_progress"><span class="hiw_progress_fill"></span></div>
                     <div class="hiw_card_top">
                         <span class="hiw_step_tag">Step 01</span>
-                        <ion-icon name="ios-calendar"></ion-icon>
+                        <ion-icon name="calendar-number"></ion-icon>
                     </div>
                     <h2>1. Plan &amp; Schedule</h2>
                     <div class="hiw_item">
@@ -171,7 +185,7 @@
                     <div class="hiw_card_progress"><span class="hiw_progress_fill"></span></div>
                     <div class="hiw_card_top">
                         <span class="hiw_step_tag">Step 02</span>
-                        <ion-icon name="ios-folder-open"></ion-icon>
+                        <ion-icon name="folder-open"></ion-icon>
                     </div>
                     <h2>2. Learn &amp; Retain</h2>
                     <div class="hiw_item">
@@ -193,7 +207,7 @@
                     <div class="hiw_card_progress"><span class="hiw_progress_fill"></span></div>
                     <div class="hiw_card_top">
                         <span class="hiw_step_tag">Step 03</span>
-                        <ion-icon name="ios-timer"></ion-icon>
+                        <ion-icon name="timer"></ion-icon>
                     </div>
                     <h2>3. Focus &amp; Execute</h2>
                     <div class="hiw_item">
@@ -210,19 +224,19 @@
                 </div>
                 <div class="flow_steps_row" id="flow-pipeline">
                     <div class="flow_card active" data-flow="0">
-                        <p class="flow_title"><ion-icon name="ios-bookmarks"></ion-icon>Set Up</p>
+                        <p class="flow_title"><ion-icon name="book"></ion-icon>Set Up</p>
                         <p class="flow_desc">Add your enrolled Courses and bookmark relevant Links.</p>
                     </div>
                     <div class="flow_card" data-flow="1">
-                        <p class="flow_title"><ion-icon name="ios-calendar"></ion-icon>Organize</p>
+                        <p class="flow_title"><ion-icon name="calendar-clear"></ion-icon>Organize</p>
                         <p class="flow_desc">Enter deadlines into your Calendar, set up routine blocks in your Schedule, and jot down detailed study materials in Notes.</p>
                     </div>
                     <div class="flow_card" data-flow="2">
-                        <p class="flow_title"><ion-icon name="ios-checkbox-outline"></ion-icon>Prioritize</p>
+                        <p class="flow_title"><ion-icon name="checkbox"></ion-icon>Prioritize</p>
                         <p class="flow_desc">Extract action items into your daily Todo list.</p>
                     </div>
                     <div class="flow_card" data-flow="3">
-                        <p class="flow_title"><ion-icon name="ios-flame"></ion-icon>Execute</p>
+                        <p class="flow_title"><ion-icon name="flame"></ion-icon>Execute</p>
                         <p class="flow_desc">Launch the Pomodoro timer to power through tasks uninterrupted.</p>
                     </div>
                 </div>
@@ -242,10 +256,10 @@
                 <div class="faq_item active">
                     <button class="faq_question" type="button" aria-expanded="true">
                         <span class="faq_q_left">
-                            <ion-icon name="ios-information-circle-outline"></ion-icon>
+                            <ion-icon name="help-outline"></ion-icon>
                             <span>What is SyncSphere?</span>
                         </span>
-                        <ion-icon class="faq_chevron" name="ios-arrow-down"></ion-icon>
+                        <ion-icon name="chevron-down-outline"></ion-icon>
                     </button>
                     <div class="faq_answer">
                         <p>It is a simple student planner app we built so you don't have to switch between five different apps just to check your class schedule, to-do list, course notes, and study timer.</p>
@@ -255,10 +269,10 @@
                 <div class="faq_item">
                     <button class="faq_question" type="button" aria-expanded="false">
                         <span class="faq_q_left">
-                            <ion-icon name="ios-download"></ion-icon>
+                            <ion-icon name="arrow-down-circle-outline"></ion-icon>
                             <span>When can I download the app?</span>
                         </span>
-                        <ion-icon class="faq_chevron" name="ios-arrow-down"></ion-icon>
+                        <ion-icon name="chevron-down-outline"></ion-icon>
                     </button>
                     <div class="faq_answer">
                         <p>We're still finishing development and testing right now. The beta version will be out soon on the Play Store and App Store—feel free to answer our quick survey at the top of the page while waiting!</p>
@@ -268,10 +282,10 @@
                 <div class="faq_item">
                     <button class="faq_question" type="button" aria-expanded="false">
                         <span class="faq_q_left">
-                            <ion-icon name="ios-calendar"></ion-icon>
+                            <ion-icon name="calendar-outline"></ion-icon>
                             <span>How is the Schedule different from the Calendar?</span>
                         </span>
-                        <ion-icon class="faq_chevron" name="ios-arrow-down"></ion-icon>
+                        <ion-icon name="chevron-down-outline"></ion-icon>
                     </button>
                     <div class="faq_answer">
                         <p>The Schedule is for your weekly routine (like classes that repeat every Monday and Wednesday), while the Calendar is for specific dates like exams, deadlines, and school events.</p>
@@ -281,10 +295,10 @@
                 <div class="faq_item">
                     <button class="faq_question" type="button" aria-expanded="false">
                         <span class="faq_q_left">
-                            <ion-icon name="ios-phone-portrait"></ion-icon>
+                            <ion-icon name="phone-portrait-outline"></ion-icon>
                             <span>How does the NFC feature work?</span>
                         </span>
-                        <ion-icon class="faq_chevron" name="ios-arrow-down"></ion-icon>
+                        <ion-icon name="chevron-down-outline"></ion-icon>
                     </button>
                     <div class="faq_answer">
                         <p>You can save your schedule or study timer onto an NFC card or sticker. When you tap your phone on it, the app opens your tasks or starts your Pomodoro timer right away.</p>
@@ -294,10 +308,10 @@
                 <div class="faq_item">
                     <button class="faq_question" type="button" aria-expanded="false">
                         <span class="faq_q_left">
-                            <ion-icon name="ios-cloud-outline"></ion-icon>
+                            <ion-icon name="cloudy-outline"></ion-icon>
                             <span>Is it free to use?</span>
                         </span>
-                        <ion-icon class="faq_chevron" name="ios-arrow-down"></ion-icon>
+                        <ion-icon name="chevron-down-outline"></ion-icon>
                     </button>
                     <div class="faq_answer">
                         <p>Yes, the beta test will be completely free for everyone to try out and use for their classes.</p>
@@ -434,7 +448,10 @@
                     </div>
                     <label>Zaider</label>
                     <span class="id_role_badge">Founder</span>
+                    <p>It's our founder's birthday today!</p>
+                    <!--
                     <div class="id_barcode"></div>
+                    -->
                 </div>
 
                 <!-- Creator 5: Renz -->
