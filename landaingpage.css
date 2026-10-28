@@ -2346,3 +2346,10 @@ body.welcome_modal_active {
         font-size: 20px;
     }
 }
+
+
+.navbar_content ion-icon {
+    font-size: 23px;
+    padding-right: 5px;
+    color: #111111;
+}

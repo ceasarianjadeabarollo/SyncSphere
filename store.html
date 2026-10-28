@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MatertinoDEB Store • Syncsphere</title>
+
+    <!-- Google Fonts: Bricolage Grotesque (Display) & Poppins (Body Regular) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Ionicons for iOS Minimalist Icons -->
+    <script type="module" src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js"></script>
+
+    <!-- Minimalist iPhone Glassmorphism Stylesheet -->
+    <link rel="stylesheet" href="store.css">
+</head>
+<body>
+
+    <!-- Liquid Ambient Wallpaper Glow (diffuses through iPhone frosted glass) -->
+    <div class="ambient_background" aria-hidden="true">
+        <div class="ambient_orb orb_1"></div>
+        <div class="ambient_orb orb_2"></div>
+        <div class="ambient_orb orb_3"></div>
+        <div class="ambient_orb orb_4"></div>
+        <div class="ambient_noise"></div>
+    </div>
+
+    <!-- iOS Glassmorphic Top Navigation Bar -->
+    <header class="container_navigation">
+        <nav class="navigation" aria-label="Main Navigation">
+            <!-- Brand Logo -->
+            <a href="store.html" class="logo_group" title="MatertinoDEB Store">
+                <div class="logo_squircle">
+                    <img src="assets/image/Syncsphere logo work space (1080 x 1080 px).png" alt="MatertinoDEB Mascot">
+                </div>
+                <div class="logo_text">
+                    <span class="logo_title">MatertinoDEB</span>
+                </div>
+            </a>
+
+            <!-- Center Segmented Glass Switcher -->
+            <div class="nav_segmented_links" role="tablist">
+                <a href="#discover" class="nav_pill_link active" role="tab" aria-selected="true">
+                    <ion-icon name="sparkles-outline"></ion-icon>
+                    <span>Discover</span>
+                </a>
+                <a href="#apps" class="nav_pill_link" role="tab" aria-selected="false">
+                    <ion-icon name="grid-outline"></ion-icon>
+                    <span>Apps</span>
+                </a>
+                <a href="#updates" class="nav_pill_link" role="tab" aria-selected="false">
+                    <ion-icon name="sync-outline"></ion-icon>
+                    <span>Updates</span>
+                </a>
+                <a href="index.html" class="nav_pill_link" title="Visit SyncSphere Landing Page">
+                    <ion-icon name="open-outline"></ion-icon>
+                    <span>Landing Page</span>
+                </a>
+            </div>
+
+            <!-- Right Actions: Search + CTA -->
+            <div class="nav_actions">
+                <div class="nav_search_wrap">
+                    <ion-icon name="search-outline" class="nav_search_icon"></ion-icon>
+                    <input type="text" id="nav-search-input" class="nav_search_input" placeholder="Search apps..." aria-label="Search apps">
+                </div>
+                <a href="index.html" class="nav_cta_btn" title="Go to Landing Page">
+                    <span>Explore Web</span>
+                    <ion-icon name="arrow-forward-outline"></ion-icon>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Store Content Area -->
+    <main class="store_container" id="discover">
+
+        <!-- Store Meta Breadcrumbs & Verification -->
+        <div class="store_header_meta">
+            <div class="store_breadcrumbs">
+                <a href="store.html">MatertinoDEB Store</a>
+                <span>/</span>
+                <a href="#apps">Productivity</a>
+                <span>/</span>
+                <span>Syncsphere</span>
+            </div>
+            <div class="verified_store_badge">
+                <ion-icon name="shield-checkmark-outline"></ion-icon>
+                <span>Verified Clean & Secure</span>
+            </div>
+        </div>
+
+        <!-- =================================================================
+             SPOTLIGHT HERO: SYNCPHERE APP (THE FIRST & FEATURED DOWNLOAD)
+             ================================================================= -->
+        <article class="app_spotlight_card" id="syncsphere-spotlight">
+
+            <!-- Hero Top Row: Icon + Meta + Get Button -->
+            <div class="app_hero_row">
+                <div class="app_identity_group">
+                    <!-- App Icon (Syncsphere Calendar Icon with squircle continuous corners) -->
+                    <div class="app_icon_frame">
+                        <img src="assets/image/syncsphere-icon.jpg" alt="Syncsphere App Icon - Mon 13 Calendar Design">
+                    </div>
+
+                    <!-- App Title, Tagline & Developer -->
+                    <div class="app_text_meta">
+                        <!-- App Name in Bricolage Grotesque Display Font -->
+                        <h1 class="app_name_display">Syncsphere</h1>
+                        <p class="app_tagline">The all-in-one productivity hub. Tasks, schedules, files, notes, and focused Pomodoro sessions.</p>
+                        <span class="app_developer_byline">
+                            Created by <strong>MatertinoDEB</strong> • Ceasar, MaryAnn, Karla, Zaider & Renz
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Hero Action Area (GET Pill + Share + In-Web Loading Progress) -->
+                <div class="app_action_area">
+                    <div class="app_action_buttons">
+                        <button type="button" class="btn_ios_get" id="store-get-btn" aria-label="Get Syncsphere App">
+                            <span class="btn_progress_fill" id="btn-progress-fill"></span>
+                            <span class="btn_label" id="btn-label">GET</span>
+                            <span class="ios_spinner" id="btn-spinner" aria-hidden="true"></span>
+                        </button>
+                        <button type="button" class="btn_glass_icon" id="store-share-btn" title="Share Syncsphere" aria-label="Share Syncsphere">
+                            <ion-icon name="share-outline"></ion-icon>
+                        </button>
+                    </div>
+
+                    <!-- Live Subtext / Status Pill -->
+                    <div class="download_status_container" id="download-status-container">
+                        <span class="app_action_subtext" id="download-status-text">Free • Official APK Release • 114 MB</span>
+                    </div>
+
+                    <!-- Prominent Dedicated Glass Download Loading Progress Card -->
+                    <div class="active_download_glass_card" id="active-download-card">
+                        <div class="download_card_header">
+                            <div class="download_pulse_badge">
+                                <span class="pulse_ring"></span>
+                                <ion-icon name="cloud-download"></ion-icon>
+                            </div>
+                            <div class="download_card_info">
+                                <div class="download_card_title_row">
+                                    <span class="download_card_title">Downloading Syncsphere...</span>
+                                    <span class="download_card_pct" id="card-download-pct">0%</span>
+                                </div>
+                                <div class="download_card_meta_row">
+                                    <span id="card-download-bytes">0.0 MB / 114.0 MB</span>
+                                    <span class="download_speed_badge" id="card-download-speed">24.5 MB/s</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="download_prominent_track">
+                            <div class="download_prominent_fill" id="card-download-fill">
+                                <div class="shimmer_glow"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Apple Store Metrics Bar -->
+            <section class="app_metrics_strip" aria-label="App Ratings and Highlights">
+                <div class="metric_item">
+                    <span class="metric_label">Ratings</span>
+                    <div class="metric_value">4.9 <ion-icon name="star" style="font-size: 1rem; color: #ff9500;"></ion-icon></div>
+                    <div class="metric_stars">
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star-half"></ion-icon>
+                    </div>
+                    <span class="metric_sub">4.8K Ratings</span>
+                </div>
+
+                <div class="metric_item">
+                    <span class="metric_label">Category</span>
+                    <div class="metric_value">#1</div>
+                    <span class="metric_sub">Productivity</span>
+                </div>
+
+                <div class="metric_item">
+                    <span class="metric_label">Age</span>
+                    <div class="metric_value">15+</div>
+                    <span class="metric_sub">Years Old</span>
+                </div>
+
+                <div class="metric_item">
+                    <span class="metric_label">Developer</span>
+                    <div class="metric_value"><ion-icon name="person-circle-outline"></ion-icon></div>
+                    <span class="metric_sub">MatertinoDEB</span>
+                </div>
+
+                <div class="metric_item">
+                    <span class="metric_label">Size</span>
+                    <div class="metric_value">118.0</div>
+                    <span class="metric_sub">Megabytes</span>
+                </div>
+            </section>
+
+            <!-- App Screenshots Preview Gallery -->
+            <section class="app_screenshots_section" aria-label="App Previews and Screenshots">
+                <div class="section_title_row">
+                    <h2 class="section_heading">App Previews</h2>
+                    <div class="gallery_nav_controls">
+                        <button type="button" class="gallery_arrow_btn" id="gallery-prev-btn" aria-label="Previous screenshot">
+                            <ion-icon name="chevron-back-outline"></ion-icon>
+                        </button>
+                        <button type="button" class="gallery_arrow_btn" id="gallery-next-btn" aria-label="Next screenshot">
+                            <ion-icon name="chevron-forward-outline"></ion-icon>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="screenshots_scroll_track" id="screenshots-track">
+                    <!-- Screenshot 1 -->
+                    <div class="screenshot_frame" title="Click to view full preview">
+                        <img src="assets/app_images/6267306623420273300.jpg" alt="Syncsphere App Interface Screenshot 1">
+                        <div class="screenshot_caption">
+                            <span>Overview</span>
+                            <ion-icon name="expand-outline"></ion-icon>
+                        </div>
+                    </div>
+
+                    <!-- Screenshot 2 -->
+                    <div class="screenshot_frame" title="Click to view full preview">
+                        <img src="assets/app_images/6267306623420273301.jpg" alt="Syncsphere App Interface Screenshot 2">
+                        <div class="screenshot_caption">
+                            <span>Schedule & Planner</span>
+                            <ion-icon name="expand-outline"></ion-icon>
+                        </div>
+                    </div>
+
+                    <!-- Screenshot 3 -->
+                    <div class="screenshot_frame" title="Click to view full preview">
+                        <img src="assets/app_images/6267306623420273302.jpg" alt="Syncsphere App Interface Screenshot 3">
+                        <div class="screenshot_caption">
+                            <span>Focus Flow</span>
+                            <ion-icon name="expand-outline"></ion-icon>
+                        </div>
+                    </div>
+
+                    <!-- Screenshot 4 -->
+                    <div class="screenshot_frame" title="Click to view full preview">
+                        <img src="assets/app_images/6267306623420273303.jpg" alt="Syncsphere App Interface Screenshot 4">
+                        <div class="screenshot_caption">
+                            <span>Task Workspace</span>
+                            <ion-icon name="expand-outline"></ion-icon>
+                        </div>
+                    </div>
+
+                    <!-- Screenshot 5 -->
+                    <div class="screenshot_frame" title="Click to view full preview">
+                        <img src="assets/app_images/6267306623420273304.jpg" alt="Syncsphere App Interface Screenshot 5">
+                        <div class="screenshot_caption">
+                            <span>Daily Routine</span>
+                            <ion-icon name="expand-outline"></ion-icon>
+                        </div>
+                    </div>
+
+                    <!-- Screenshot 6 -->
+                    <div class="screenshot_frame" title="Click to view full preview">
+                        <img src="assets/app_images/6267306623420273305.jpg" alt="Syncsphere App Interface Screenshot 6">
+                        <div class="screenshot_caption">
+                            <span>Smart Sync</span>
+                            <ion-icon name="expand-outline"></ion-icon>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- App Narrative & Specifications (Poppins Regular) -->
+            <div class="app_details_grid">
+                <!-- Narrative Column -->
+                <div class="app_narrative_col">
+                    <!-- What's New Callout -->
+                    <div class="whats_new_card">
+                        <div class="whats_new_header">
+                            <h3 class="whats_new_title">syncSphere Version 1.0.0v Beta</h3>
+                            <span class="version_badge">Latest Release • Today</span>
+                        </div>
+                        <ul class="whats_new_list">
+                            <li>
+                                <ion-icon name="checkmark-circle"></ion-icon>
+                                <span>A new home screen featuring local weather updates, quick-access tools (Pomodoro, Schedule, NFC), and a dedicated To-Do list.</span>
+                            </li>
+                            <li>
+                                <ion-icon name="checkmark-circle"></ion-icon>
+                                <span>Access your custom SyncSphere profile card and utilize built-in NFC tag reading capabilities directly from the settings menu.</span>
+                            </li>
+                            <li>
+                                <ion-icon name="checkmark-circle"></ion-icon>
+                                <span>Boost focus with a dedicated timer featuring one-tap presets for 25-minute focus sessions, short breaks, and long breaks.</span>
+                            </li>
+                            <li>
+                                <ion-icon name="checkmark-circle"></ion-icon>
+                                <span>Keep your study materials sorted with bright, color-coded folders for files and links tied to your specific subjects.</span>
+                            </li>
+                            <li>
+                                <ion-icon name="checkmark-circle"></ion-icon>
+                                <span>Plan your month easily using the calendar view paired with a vibrant, scrollable list of upcoming events.</span>
+                            </li>
+                            <li>
+                                <ion-icon name="checkmark-circle"></ion-icon>
+                                <span>Monitor your ongoing classes with a media-player-style progress widget and view your week at a glance with the color-coded timetable.</span>
+                            </li>                            
+                        </ul>
+                    </div>
+
+                    <!-- Story Content in Poppins Regular -->
+                    <div class="app_story_content">
+                        <p>
+                            <strong>Syncsphere</strong> is the next-generation productivity hub engineered to eliminate clutter and keep you effortlessly focused. Designed with deep empathy for students, creators, and professionals, it unifies fragmented tools into a singular, breathtaking glassmorphic experience.
+                        </p>
+                        <p>
+                            From structured study timetables and project milestones to quick-capture scratchpads and distraction-free Pomodoro intervals, Syncsphere adapts to how your mind naturally works. Everything updates in real time with end-to-end device recognition.
+                        </p>
+
+                        <!-- Feature Pills -->
+                        <div class="feature_pill_grid">
+                            <span class="feature_tag"><ion-icon name="flash-outline"></ion-icon> Instant Device Sync</span>
+                            <span class="feature_tag"><ion-icon name="calendar-outline"></ion-icon> Smart Schedules</span>
+                            <span class="feature_tag"><ion-icon name="timer-outline"></ion-icon> Pomodoro Focus</span>
+                            <span class="feature_tag"><ion-icon name="document-text-outline"></ion-icon> Rich Notes</span>
+                            <span class="feature_tag"><ion-icon name="cloud-offline-outline"></ion-icon> 100% Offline Ready</span>
+                            <span class="feature_tag"><ion-icon name="lock-closed-outline"></ion-icon> Zero Tracker Guarantee</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Specifications Column -->
+                <div class="app_specs_col">
+                    <div class="specs_glass_panel">
+                        <h3 class="specs_panel_title">Information</h3>
+                        <div class="spec_row">
+                            <span class="spec_label">Provider</span>
+                            <span class="spec_val">MatertinoDEB</span>
+                        </div>
+                        <div class="spec_row">
+                            <span class="spec_label">Size</span>
+                            <span class="spec_val">114.0 MB</span>
+                        </div>
+                        <div class="spec_row">
+                            <span class="spec_label">Compatibility</span>
+                            <span class="spec_val">Android</span>
+                        </div>
+                        <div class="spec_row">
+                            <span class="spec_label">Languages</span>
+                            <span class="spec_val">English, Filipino</span>
+                        </div>
+                        <div class="spec_row">
+                            <span class="spec_label">Age Rating</span>
+                            <span class="spec_val">Rated 4+</span>
+                        </div>
+                        <div class="spec_row">
+                            <span class="spec_label">Price</span>
+                            <span class="spec_val">Free</span>
+                        </div>
+                        <div class="spec_row">
+                            <span class="spec_label">Privacy Policy</span>
+                            <span class="spec_val"><a href="privacy-policy.html" id="spec-privacy-btn" style="color: #0071e3; text-decoration: none; font-weight: 600;">View Policy</a></span>
+                        </div>
+                        <div class="spec_row">
+                            <span class="spec_label">Terms of Service</span>
+                            <span class="spec_val"><a href="terms-of-service.html" id="spec-terms-btn" style="color: #0071e3; text-decoration: none; font-weight: 600;">View Terms</a></span>
+                        </div>
+                        <div class="spec_row">
+                            <span class="spec_label">Developers</span>
+                            <span class="spec_val">Ceasar, MaryAnn, Karla, Zaider & Renz</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ratings & Reviews Glass Section -->
+            <section class="ratings_review_section" aria-label="Customer Ratings and Reviews">
+                <h2 class="section_heading" style="margin-bottom: 20px;">Ratings & Reviews</h2>
+
+                <div class="ratings_overview_box">
+                    <div class="rating_score_large">
+                        <span class="score_num">4.9</span>
+                        <div class="score_stars">
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star-half"></ion-icon>
+                        </div>
+                        <span class="score_count">out of 5 • 4,820 ratings</span>
+                    </div>
+
+                    <div class="rating_bars_stack">
+                        <div class="rating_bar_row">
+                            <span>5★</span>
+                            <div class="bar_track"><div class="bar_fill" style="width: 90%;"></div></div>
+                            <span>90%</span>
+                        </div>
+                        <div class="rating_bar_row">
+                            <span>4★</span>
+                            <div class="bar_track"><div class="bar_fill" style="width: 7%;"></div></div>
+                            <span>7%</span>
+                        </div>
+                        <div class="rating_bar_row">
+                            <span>3★</span>
+                            <div class="bar_track"><div class="bar_fill" style="width: 2%;"></div></div>
+                            <span>2%</span>
+                        </div>
+                        <div class="rating_bar_row">
+                            <span>2★</span>
+                            <div class="bar_track"><div class="bar_fill" style="width: 0.5%;"></div></div>
+                            <span>&lt;1%</span>
+                        </div>
+                        <div class="rating_bar_row">
+                            <span>1★</span>
+                            <div class="bar_track"><div class="bar_fill" style="width: 0.5%;"></div></div>
+                            <span>&lt;1%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reviews_cards_grid">
+                    <div class="review_glass_card">
+                        <div class="review_card_header">
+                            <span class="reviewer_name">Alex Rivera</span>
+                            <span class="review_date">2 days ago</span>
+                        </div>
+                        <div class="review_stars">
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                        </div>
+                        <p class="review_text">
+                            "The glassmorphic design feels straight out of an Apple keynote. Having my schedule, notes, and pomodoro in one app saved my semester!"
+                        </p>
+                    </div>
+
+                    <div class="review_glass_card">
+                        <div class="review_card_header">
+                            <span class="reviewer_name">Samantha Cruz</span>
+                            <span class="review_date">1 week ago</span>
+                        </div>
+                        <div class="review_stars">
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                        </div>
+                        <p class="review_text">
+                            "Super clean and lightweight. Doesn’t bog down my phone at all. Huge props to Ceasar, MaryAnn, Karla, Zaider, and Renz for building this."
+                        </p>
+                    </div>
+
+                    <div class="review_glass_card">
+                        <div class="review_card_header">
+                            <span class="reviewer_name">David Chen</span>
+                            <span class="review_date">2 weeks ago</span>
+                        </div>
+                        <div class="review_stars">
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                        </div>
+                        <p class="review_text">
+                            "Syncsphere is the only productivity tool that looks gorgeous while actually keeping me focused. 10/10 recommendation."
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </article>
+
+        <!-- =================================================================
+             MORE APPS FROM MATERTINODEB ECOSYSTEM (COMING SOON GLASS SHELF)
+             ================================================================= -->
+        <section class="ecosystem_shelf_section" id="apps">
+            <div class="shelf_header_row">
+                <div>
+                    <h2 class="shelf_title">More From MatertinoDEB</h2>
+                    <p class="shelf_subtitle">Expanding the intelligent minimalist ecosystem.</p>
+                </div>
+            </div>
+
+            <div class="ecosystem_grid">
+                <!-- App 2: SphereNotes -->
+                <div class="upcoming_app_card">
+                    <div class="upcoming_icon">
+                        <img src="assets/image/Syncsphere logo work space (1080 x 1080 px) (1).png" alt="SphereNotes App Icon" >
+                    </div>
+                    <div class="upcoming_info">
+                        <h3 class="upcoming_title">NFCshare</h3>
+                        <p class="upcoming_desc">NFC Share is a fast, seamless mobile app that transfers files between devices completely offline.</p>
+                        <span class="upcoming_badge">Coming Soon</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- =====================================================================
+         DEVICE RECOGNIZER: PC RESTRICTION ERROR MODAL
+         ===================================================================== -->
+    <div class="download_modal_backdrop" id="pc-restriction-modal" role="dialog" aria-modal="true" aria-label="Device Incompatible Error">
+        <div class="pc_error_glass_sheet">
+            <button type="button" class="sheet_close_btn" id="pc-error-close-btn" aria-label="Close error dialog">
+                <ion-icon name="close-outline"></ion-icon>
+            </button>
+
+            <!-- Error Ring Icon -->
+            <div class="pc_error_icon_ring">
+                <ion-icon name="phone-portrait-outline" class="phone_icon"></ion-icon>
+                <span class="error_badge_sub"><ion-icon name="close-circle"></ion-icon></span>
+            </div>
+
+            <!-- Error Typography -->
+            <span class="pc_error_pill">Incompatible Device</span>
+            <h3 class="pc_error_title">Mobile Phone Required</h3>
+            <p class="pc_error_desc">
+                You cannot install this app on your device. <strong>Syncsphere</strong> is compiled exclusively for <strong>mobile phones only</strong> (Android & iOS).
+            </p>
+
+            <div class="pc_device_detected_box">
+                <div class="pc_detected_row">
+                    <span class="detected_label">Your Device:</span>
+                    <span class="detected_value" id="detected-device-text">Windows PC / Desktop</span>
+                </div>
+                <div class="pc_detected_row">
+                    <span class="detected_label">Supported Platforms:</span>
+                    <span class="detected_value text_green">Android 10+ • iOS 16+ (Mobile Only)</span>
+                </div>
+            </div>
+
+            <div class="pc_error_actions">
+                <button type="button" class="btn_copy_mobile_link" id="btn-copy-mobile-link">
+                    <ion-icon name="copy-outline"></ion-icon>
+                    <span>Copy Link to Open on Mobile Phone</span>
+                </button>
+                <a href="index.html" class="btn_pc_web_fallback">
+                    <ion-icon name="globe-outline"></ion-icon>
+                    <span>Continue to Web Experience</span>
+                </a>
+                <button type="button" class="btn_dev_bypass" id="btn-dev-bypass">
+                    <span>Developer Override: Test Mobile Install on PC</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         1. IN-WEB SYSTEM PACKAGE INSTALLER MODAL (GLASSMORPHISM)
+         ===================================================================== -->
+    <div class="download_modal_backdrop" id="web-installer-modal" role="dialog" aria-modal="true" aria-label="Syncsphere Package Installer">
+        <div class="installer_glass_sheet">
+            <div class="installer_header">
+                <div class="installer_badge_row">
+                    <span class="installer_pill_tag">System Package Installer</span>
+                    <span class="installer_verified_pill"><ion-icon name="shield-checkmark"></ion-icon> Verified Clean</span>
+                </div>
+                <button type="button" class="installer_close_btn" id="installer-close-btn" aria-label="Close installer">
+                    <ion-icon name="close-outline"></ion-icon>
+                </button>
+            </div>
+
+            <div class="installer_app_info">
+                <div class="installer_icon_squircle">
+                    <img src="assets/image/syncsphere-icon.jpg" alt="Syncsphere Icon">
+                </div>
+                <div class="installer_meta">
+                    <h3 class="installer_app_name">Syncsphere</h3>
+                    <p class="installer_package_id">com.matertinodeb.syncsphere</p>
+                    <div class="installer_tags">
+                        <span>v1.2.0</span>
+                        <span>•</span>
+                        <span>114.0 MB</span>
+                        <span>•</span>
+                        <span>Official APK</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Install Prompt Message -->
+            <div class="installer_prompt_box">
+                <p class="installer_question">Do you want to install this application on your device?</p>
+                <p class="installer_details">Downloaded directly from <code>assets/all_apps/syncSphere.apk</code>. The app will be installed and placed onto your device home screen.</p>
+            </div>
+
+            <!-- Animated Extraction & Installation Progress (shown after clicking Install) -->
+            <div class="installer_progress_block" id="installer-progress-block">
+                <div class="installer_step_row">
+                    <span class="installer_step_label" id="installer-step-label">Extracting application package...</span>
+                    <span class="installer_percent_label" id="installer-percent-label">0%</span>
+                </div>
+                <div class="installer_track">
+                    <div class="installer_fill" id="installer-fill"></div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="installer_actions_row" id="installer-actions-row">
+                <button type="button" class="btn_installer_cancel" id="installer-cancel-btn">Cancel</button>
+                <button type="button" class="btn_installer_primary" id="installer-confirm-btn">
+                    <ion-icon name="download-outline"></ion-icon>
+                    <span>Install Application</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         2. HOME SCREEN INSTALLED CONFIRMATION MODAL (IPHONE / PHONE MOCKUP)
+         ===================================================================== -->
+    <div class="download_modal_backdrop" id="homescreen-modal" role="dialog" aria-modal="true" aria-label="Installed on Home Screen">
+        <div class="homescreen_success_sheet">
+            <button type="button" class="sheet_close_btn" id="homescreen-close-btn" aria-label="Close">
+                <ion-icon name="close-outline"></ion-icon>
+            </button>
+
+            <!-- Success Header -->
+            <div class="homescreen_success_header">
+                <div class="success_icon_ring">
+                    <ion-icon name="checkmark-circle"></ion-icon>
+                </div>
+                <h3 class="homescreen_title">Syncsphere is Installed!</h3>
+                <p class="homescreen_sub">The app has been added to your device and is ready on your Home Screen.</p>
+            </div>
+
+            <!-- Realistic Phone Home Screen Mockup Frame -->
+            <div class="phone_homescreen_mockup" aria-hidden="true">
+                <!-- Phone Top Bar: Dynamic Island + Clock & Status -->
+                <div class="phone_top_bar">
+                    <span class="phone_time">9:41</span>
+                    <div class="dynamic_island"></div>
+                    <div class="phone_status_icons">
+                        <ion-icon name="cellular-outline"></ion-icon>
+                        <ion-icon name="wifi-outline"></ion-icon>
+                        <ion-icon name="battery-full-outline"></ion-icon>
+                    </div>
+                </div>
+
+                <!-- Home Screen App Grid -->
+                <div class="homescreen_grid">
+                    <!-- Row 1 -->
+                    <div class="mock_app_item">
+                        <div class="mock_app_icon bg_calendar">
+                            <span class="cal_weekday">WED</span>
+                            <span class="cal_day">28</span>
+                        </div>
+                        <span class="mock_app_name">Calendar</span>
+                    </div>
+                    <div class="mock_app_item">
+                        <div class="mock_app_icon bg_photos"><ion-icon name="images"></ion-icon></div>
+                        <span class="mock_app_name">Photos</span>
+                    </div>
+                    <div class="mock_app_item">
+                        <div class="mock_app_icon bg_notes"><ion-icon name="document-text"></ion-icon></div>
+                        <span class="mock_app_name">Notes</span>
+                    </div>
+                    <div class="mock_app_item">
+                        <div class="mock_app_icon bg_reminders"><ion-icon name="list"></ion-icon></div>
+                        <span class="mock_app_name">Reminders</span>
+                    </div>
+
+                    <!-- Row 2 -->
+                    <div class="mock_app_item">
+                        <div class="mock_app_icon bg_clock"><ion-icon name="time"></ion-icon></div>
+                        <span class="mock_app_name">Clock</span>
+                    </div>
+                    <div class="mock_app_item">
+                        <div class="mock_app_icon bg_maps"><ion-icon name="map"></ion-icon></div>
+                        <span class="mock_app_name">Maps</span>
+                    </div>
+                    <div class="mock_app_item">
+                        <div class="mock_app_icon bg_weather"><ion-icon name="partly-sunny"></ion-icon></div>
+                        <span class="mock_app_name">Weather</span>
+                    </div>
+
+                    <!-- THE INSTALLED APP: SYNCPHERE -->
+                    <div class="mock_app_item app_newly_installed">
+                        <div class="mock_app_icon syncsphere_installed_icon">
+                            <img src="assets/image/syncsphere-icon.jpg" alt="Syncsphere Installed">
+                            <span class="installed_pulse_dot" title="Newly Installed"></span>
+                        </div>
+                        <span class="mock_app_name">Syncsphere</span>
+                    </div>
+                </div>
+
+                <!-- Phone Glass Dock -->
+                <div class="phone_dock">
+                    <div class="dock_app_icon bg_phone"><ion-icon name="call"></ion-icon></div>
+                    <div class="dock_app_icon bg_safari"><ion-icon name="compass"></ion-icon></div>
+                    <div class="dock_app_icon bg_messages"><ion-icon name="chatbubble"></ion-icon></div>
+                    <div class="dock_app_icon bg_music"><ion-icon name="musical-notes"></ion-icon></div>
+                </div>
+            </div>
+
+            <!-- Home Screen Modal Actions -->
+            <div class="homescreen_actions">
+                <a href="index.html" class="btn_homescreen_launch">
+                    <ion-icon name="play-circle"></ion-icon>
+                    <span>Launch Syncsphere</span>
+                </a>
+                <a href="assets/all_apps/syncSphere.apk" download="syncSphere.apk" class="btn_homescreen_apk">
+                    <ion-icon name="download-outline"></ion-icon>
+                    <span>Download APK File (114 MB)</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         INTERACTIVE DOWNLOAD / INSTALL SHEET MODAL (iOS LIQUID SHEET)
+         ===================================================================== -->
+    <div class="download_modal_backdrop" id="download-modal" role="dialog" aria-modal="true" aria-label="Download Syncsphere">
+        <div class="download_glass_sheet">
+            <button type="button" class="sheet_close_btn" id="sheet-close-btn" aria-label="Close modal">
+                <ion-icon name="close-outline"></ion-icon>
+            </button>
+
+            <!-- App Icon in Modal -->
+            <div class="sheet_app_icon">
+                <img src="assets/image/syncsphere-icon.jpg" alt="Syncsphere Calendar Icon">
+            </div>
+
+            <h3 class="sheet_title">Syncsphere</h3>
+            <p class="sheet_desc">Choose how you’d like to experience Syncsphere on your device.</p>
+
+            <div class="sheet_options_stack">
+                <!-- Option 1: Launch Web Experience -->
+                <a href="index.html" class="sheet_option_card">
+                    <div class="sheet_option_icon">
+                        <ion-icon name="globe-outline"></ion-icon>
+                    </div>
+                    <div class="sheet_option_info">
+                        <div class="sheet_option_title">Launch Web Experience</div>
+                        <div class="sheet_option_sub">Open instant web landing page & live ecosystem</div>
+                    </div>
+                    <ion-icon name="chevron-forward-outline" class="sheet_arrow"></ion-icon>
+                </a>
+
+                <!-- Option 2: Add to Home Screen (PWA) -->
+                <a href="index.html" class="sheet_option_card">
+                    <div class="sheet_option_icon accent_green">
+                        <ion-icon name="phone-portrait-outline"></ion-icon>
+                    </div>
+                    <div class="sheet_option_info">
+                        <div class="sheet_option_title">Install as iPhone App</div>
+                        <div class="sheet_option_sub">Tap Share in Safari & select "Add to Home Screen"</div>
+                    </div>
+                    <ion-icon name="chevron-forward-outline" class="sheet_arrow"></ion-icon>
+                </a>
+
+                <!-- Option 3: Survey & Feedback -->
+                <a href="index.html#experience_btn" class="sheet_option_card">
+                    <div class="sheet_option_icon accent_purple">
+                        <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+                    </div>
+                    <div class="sheet_option_info">
+                        <div class="sheet_option_title">Share Your Thoughts</div>
+                        <div class="sheet_option_sub">Help Ceasar, MaryAnn, Karla, Zaider & Renz refine features</div>
+                    </div>
+                    <ion-icon name="chevron-forward-outline" class="sheet_arrow"></ion-icon>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         CUPERTINO APPLE STYLE: PRIVACY POLICY MODAL SHEET
+         ===================================================================== -->
+    <div class="download_modal_backdrop" id="privacy-modal" role="dialog" aria-modal="true" aria-label="Privacy Policy for matertinoDEB Store">
+        <div class="privacy_glass_sheet">
+            <!-- iOS Drag Grabber Handle -->
+            <div class="cupertino_grabber"></div>
+
+            <!-- Cupertino Top Bar -->
+            <div class="cupertino_sheet_topbar">
+                <div class="cupertino_title_group">
+                    <span class="cupertino_badge">
+                        <ion-icon name="shield-checkmark"></ion-icon> Apple Cupertino Legal
+                    </span>
+                    <h3 class="cupertino_sheet_title">Privacy Policy</h3>
+                    <p class="cupertino_sheet_sub">matertinoDEB Store • Effective Oct 2026</p>
+                </div>
+                <button type="button" class="btn_cupertino_done" id="privacy-close-btn" aria-label="Done">
+                    Done
+                </button>
+            </div>
+
+            <!-- Cupertino Segmented Switcher inside Modal -->
+            <div class="cupertino_segmented_switch">
+                <button type="button" class="cupertino_segment_link active" id="modal-tab-privacy">
+                    <ion-icon name="shield-checkmark"></ion-icon>
+                    <span>Privacy Policy</span>
+                </button>
+                <button type="button" class="cupertino_segment_link" id="modal-tab-switch-terms">
+                    <ion-icon name="document-text-outline"></ion-icon>
+                    <span>Terms of Service</span>
+                </button>
+            </div>
+
+            <!-- Scrollable Content Viewport -->
+            <div class="privacy_scroll_body">
+                <div class="cupertino_callout_note">
+                    Welcome to <strong>matertinoDEB store</strong>. We are committed to protecting your personal information and your right to privacy. This Privacy Policy outlines how we collect, use, disclose, and safeguard your information when you visit our website, purchase our products, or engage with our services.<br><br>
+                    <em>By accessing or using the matertinoDEB store, you agree to the terms outlined in this policy.</em>
+                </div>
+
+                <!-- Section 1 -->
+                <div class="cupertino_inset_card">
+                    <div class="cupertino_card_header">
+                        <div class="cupertino_icon_squircle icon_blue">
+                            <ion-icon name="person-circle-outline"></ion-icon>
+                        </div>
+                        <h4 class="cupertino_card_title">1. Information We Collect</h4>
+                    </div>
+                    <p class="cupertino_card_text">We collect personal information that you voluntarily provide to us when registering at the store, expressing an interest in obtaining information about us or our products, or otherwise contacting us.</p>
+                    <ul class="cupertino_list">
+                        <li>
+                            <span class="cupertino_bullet"></span>
+                            <div><strong>Personal Identification Information:</strong> Name, billing address, shipping address, email address, and phone number.</div>
+                        </li>
+                        <li>
+                            <span class="cupertino_bullet"></span>
+                            <div><strong>Payment Data:</strong> Data necessary to process your payment if you make purchases, such as your payment instrument number (e.g., credit card number) and the security code associated with your payment instrument. <em>(Note: All payment data is stored by our payment processors, and you should review their privacy policies).</em></div>
+                        </li>
+                        <li>
+                            <span class="cupertino_bullet"></span>
+                            <div><strong>Account Data:</strong> Usernames, passwords, purchase history, and product preferences.</div>
+                        </li>
+                        <li>
+                            <span class="cupertino_bullet"></span>
+                            <div><strong>Automatically Collected Data:</strong> IP address, browser and device characteristics, operating system, language preferences, referring URLs, device name, country, location, and information about how and when you use our store.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Section 2 -->
+                <div class="cupertino_inset_card">
+                    <div class="cupertino_card_header">
+                        <div class="cupertino_icon_squircle icon_purple">
+                            <ion-icon name="construct-outline"></ion-icon>
+                        </div>
+                        <h4 class="cupertino_card_title">2. How We Use Your Information</h4>
+                    </div>
+                    <p class="cupertino_card_text">We use personal information collected via our store for a variety of business purposes described below:</p>
+                    <ul class="cupertino_list">
+                        <li>
+                            <span class="cupertino_bullet"></span>
+                            <div><strong>To Facilitate Account Creation and Logon Process:</strong> To manage user accounts and keep them in working order.</div>
+                        </li>
+                        <li>
+                            <span class="cupertino_bullet"></span>
+                            <div><strong>To Fulfill and Manage Your Orders:</strong> To process payments, arrange for shipping, and provide you with invoices and order confirmations.</div>
+                        </li>
+                        <li>
+                            <span class="cupertino_bullet"></span>
+                            <div><strong>To Deliver Customer Support:</strong> To respond to your inquiries and solve any potential issues you might have with the use of our services.</div>
+                        </li>
+                        <li>
+                            <span class="cupertino_bullet"></span>
+                            <div><strong>To Send Administrative Information:</strong> To send you details about our products, services, new feature updates, and changes to our terms, conditions, and policies.</div>
+                        </li>
+                        <li>
+                            <span class="cupertino_bullet"></span>
+                            <div><strong>For Marketing and Promotions:</strong> To send you marketing communications (you can opt out of these at any time).</div>
+                        </li>
+                        <li>
+                            <span class="cupertino_bullet"></span>
+                            <div><strong>To Improve Our Store:</strong> To analyze site usage, improve our user interface, and optimize the shopping experience.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Section 3 -->
+                <div class="cupertino_inset_card">
+                    <div class="cupertino_card_header">
+                        <div class="cupertino_icon_squircle icon_orange">
+                            <ion-icon name="share-social-outline"></ion-icon>
+                        </div>
+                        <h4 class="cupertino_card_title">3. How We Share Your Information</h4>
+                    </div>
+                    <p class="cupertino_card_text">We only share information with your consent, to comply with laws, to provide you with services, to protect your rights, or to fulfill business obligations. We may share your data with:</p>
+                    <ul class="cupertino_list">
+                        <li>
+                            <span class="cupertino_bullet"></span>
+                            <div><strong>Service Providers:</strong> Third-party vendors, service providers, contractors, or agents who perform services for us or on our behalf.</div>
+                        </li>
+                        <li>
+                            <span class="cupertino_bullet"></span>
+                            <div><strong>Business Transfers:</strong> In connection with, or during negotiations of, any merger or sale of company assets.</div>
+                        </li>
+                        <li>
+                            <span class="cupertino_bullet"></span>
+                            <div><strong>Legal Obligations:</strong> Where we are legally required to do so to comply with applicable law or legal process.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Section 4 -->
+                <div class="cupertino_inset_card">
+                    <div class="cupertino_card_header">
+                        <div class="cupertino_icon_squircle icon_teal">
+                            <ion-icon name="finger-print-outline"></ion-icon>
+                        </div>
+                        <h4 class="cupertino_card_title">4. Use of Cookies and Tracking Technologies</h4>
+                    </div>
+                    <p class="cupertino_card_text">We may use cookies and similar tracking technologies (like web beacons and pixels) to access or store information. Cookies help us remember your preferences and optimize future visits.</p>
+                </div>
+
+                <!-- Section 5 -->
+                <div class="cupertino_inset_card">
+                    <div class="cupertino_card_header">
+                        <div class="cupertino_icon_squircle icon_green">
+                            <ion-icon name="lock-closed-outline"></ion-icon>
+                        </div>
+                        <h4 class="cupertino_card_title">5. Data Retention and Security</h4>
+                    </div>
+                    <p class="cupertino_card_text">We will only keep your personal information for as long as it is necessary for the purposes set out in this privacy policy, unless a longer retention period is required by law. We implement appropriate technical and organizational security measures to safeguard your information.</p>
+                </div>
+
+                <!-- Section 6 -->
+                <div class="cupertino_inset_card">
+                    <div class="cupertino_card_header">
+                        <div class="cupertino_icon_squircle icon_indigo">
+                            <ion-icon name="shield-outline"></ion-icon>
+                        </div>
+                        <h4 class="cupertino_card_title">6. Your Privacy Rights</h4>
+                    </div>
+                    <p class="cupertino_card_text">Depending on your geographic location, you may have specific rights regarding your personal information:</p>
+                    <ul class="cupertino_list">
+                        <li><span class="cupertino_bullet"></span><div>Request access and obtain a copy of your personal information.</div></li>
+                        <li><span class="cupertino_bullet"></span><div>Request rectification or erasure of your personal data.</div></li>
+                        <li><span class="cupertino_bullet"></span><div>Restrict the processing of your personal information.</div></li>
+                        <li><span class="cupertino_bullet"></span><div>Opt-out of marketing emails by clicking the "unsubscribe" link.</div></li>
+                    </ul>
+                </div>
+
+                <!-- Section 7 -->
+                <div class="cupertino_inset_card">
+                    <div class="cupertino_card_header">
+                        <div class="cupertino_icon_squircle icon_red">
+                            <ion-icon name="sync-outline"></ion-icon>
+                        </div>
+                        <h4 class="cupertino_card_title">7. Updates to This Policy</h4>
+                    </div>
+                    <p class="cupertino_card_text">We may update this privacy policy from time to time to reflect operational or regulatory changes. The updated version will be indicated by an updated "Effective Date".</p>
+                </div>
+
+                <!-- Section 8: Apple vCard Contact -->
+                <div class="cupertino_inset_card">
+                    <div class="cupertino_card_header">
+                        <div class="cupertino_icon_squircle icon_blue">
+                            <ion-icon name="chatbubbles-outline"></ion-icon>
+                        </div>
+                        <h4 class="cupertino_card_title">8. Contact Us</h4>
+                    </div>
+                    <p class="cupertino_card_text">If you have questions about this policy, contact us via our Apple Cupertino contact card:</p>
+
+                    <div class="cupertino_vcard">
+                        <div class="cupertino_vcard_header">
+                            <div class="vcard_avatar">
+                                <ion-icon name="storefront"></ion-icon>
+                            </div>
+                            <div>
+                                <div class="vcard_name">matertinoDEB Store</div>
+                                <div class="vcard_role">Verified Merchant</div>
+                            </div>
+                        </div>
+                        <div class="cupertino_vcard_row">
+                            <ion-icon name="location-outline"></ion-icon>
+                            <div>Upper Klinan, Polomolok, South Cotabato</div>
+                        </div>
+                        <div class="cupertino_vcard_row">
+                            <ion-icon name="mail-outline"></ion-icon>
+                            <div><a href="mailto:Ceasarinajadeabarollo@gmail.com">Ceasarinajadeabarollo@gmail.com</a></div>
+                        </div>
+                        <div class="cupertino_vcard_row">
+                            <ion-icon name="call-outline"></ion-icon>
+                            <div><a href="tel:+639756128349">+63 09756128349</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cupertino Sheet Footer -->
+            <div class="cupertino_sheet_footer">
+                <a href="privacy-policy.html" target="_blank" class="btn_cupertino_primary">
+                    <ion-icon name="open-outline"></ion-icon>
+                    <span>Open Full Page</span>
+                </a>
+                <button type="button" class="btn_cupertino_secondary" id="privacy-dismiss-btn">
+                    <span>Close</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         CUPERTINO APPLE STYLE: TERMS OF SERVICE MODAL SHEET
+         ===================================================================== -->
+    <div class="download_modal_backdrop" id="terms-modal" role="dialog" aria-modal="true" aria-label="Terms of Service for matertinoDEB Store">
+        <div class="privacy_glass_sheet">
+            <!-- iOS Drag Grabber Handle -->
+            <div class="cupertino_grabber"></div>
+
+            <!-- Cupertino Top Bar -->
+            <div class="cupertino_sheet_topbar">
+                <div class="cupertino_title_group">
+                    <span class="cupertino_badge">
+                        <ion-icon name="document-text"></ion-icon> Apple Cupertino Legal
+                    </span>
+                    <h3 class="cupertino_sheet_title">Terms of Service</h3>
+                    <p class="cupertino_sheet_sub">matertinoDEB Store • Effective Oct 2026</p>
+                </div>
+                <button type="button" class="btn_cupertino_done" id="terms-close-btn" aria-label="Done">
+                    Done
+                </button>
+            </div>
+
+            <!-- Cupertino Segmented Switcher inside Modal -->
+            <div class="cupertino_segmented_switch">
+                <button type="button" class="cupertino_segment_link" id="modal-tab-switch-privacy">
+                    <ion-icon name="shield-checkmark-outline"></ion-icon>
+                    <span>Privacy Policy</span>
+                </button>
+                <button type="button" class="cupertino_segment_link active" id="modal-tab-terms">
+                    <ion-icon name="document-text"></ion-icon>
+                    <span>Terms of Service</span>
+                </button>
+            </div>
+
+            <!-- Scrollable Content Viewport -->
+            <div class="privacy_scroll_body">
+                <div class="cupertino_callout_note">
+                    Welcome to the <strong>matertinoDEB store</strong>. These Terms of Service ("Terms") govern your access to and use of our website, products, and services. By accessing or purchasing from the matertinoDEB store, you agree to be bound by these Terms and all applicable laws and regulations.<br><br>
+                    <em>If you do not agree with any part of these Terms, you are prohibited from using this site.</em>
+                </div>
+
+                <!-- Section 1 -->
+                <div class="cupertino_inset_card">
+                    <div class="cupertino_card_header">
+                        <div class="cupertino_icon_squircle icon_blue">
+                            <ion-icon name="checkmark-circle-outline"></ion-icon>
+                        </div>
+                        <h4 class="cupertino_card_title">1. Acceptance of Terms</h4>
+                    </div>
+                    <p class="cupertino_card_text">By visiting our site and/or purchasing something from us, you engage in our "Service" and agree to be bound by the following terms and conditions, including those additional terms and conditions and policies referenced herein and/or available by hyperlink. These Terms apply to all users of the site.</p>
+                </div>
+
+                <!-- Section 2 -->
+                <div class="cupertino_inset_card">
+                    <div class="cupertino_card_header">
+                        <div class="cupertino_icon_squircle icon_purple">
+                            <ion-icon name="apps-outline"></ion-icon>
+                        </div>
+                        <h4 class="cupertino_card_title">2. General Conditions and Use of the Store</h4>
+                    </div>
+                    <p class="cupertino_card_text">You must be at least the age of majority in your state or province of residence to use this store. You may not use our products for any illegal or unauthorized purpose.</p>
+                    <ul class="cupertino_list">
+                        <li>
+                            <span class="cupertino_bullet"></span>
+                            <div>You agree not to reproduce, duplicate, copy, sell, resell, or exploit any portion of the Service without express written permission.</div>
+                        </li>
+                        <li>
+                            <span class="cupertino_bullet"></span>
+                            <div>We reserve the right to refuse service to anyone for any reason at any time.</div>
+                        </li>
+                        <li>
+                            <span class="cupertino_bullet"></span>
+                            <div>You understand that your content (not including credit card information) may be transferred unencrypted and involve transmissions over various networks.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Section 3 -->
+                <div class="cupertino_inset_card">
+                    <div class="cupertino_card_header">
+                        <div class="cupertino_icon_squircle icon_green">
+                            <ion-icon name="pricetag-outline"></ion-icon>
+                        </div>
+                        <h4 class="cupertino_card_title">3. Products, Services, and Pricing</h4>
+                    </div>
+                    <p class="cupertino_card_text">Certain products or services may be available exclusively online through the website with limited quantities.</p>
+                    <ul class="cupertino_list">
+                        <li>
+                            <span class="cupertino_bullet"></span>
+                            <div><strong>Accuracy of Display:</strong> We have made every effort to display as accurately as possible product colors and images.</div>
+                        </li>
+                        <li>
+                            <span class="cupertino_bullet"></span>
+                            <div><strong>Modifications:</strong> Prices for our products are subject to change without notice.</div>
+                        </li>
+                        <li>
+                            <span class="cupertino_bullet"></span>
+                            <div><strong>Right to Limit Sales:</strong> We reserve the right to limit the sales of our products or Services to any person or region.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Section 4 -->
+                <div class="cupertino_inset_card">
+                    <div class="cupertino_card_header">
+                        <div class="cupertino_icon_squircle icon_orange">
+                            <ion-icon name="card-outline"></ion-icon>
+                        </div>
+                        <h4 class="cupertino_card_title">4. Billing and Account Information</h4>
+                    </div>
+                    <p class="cupertino_card_text">We reserve the right to refuse any order you place with us. We may limit or cancel quantities purchased per person, household, or order.</p>
+                    <ul class="cupertino_list">
+                        <li>
+                            <span class="cupertino_bullet"></span>
+                            <div><strong>Accurate Information:</strong> You agree to provide current, complete, and accurate purchase and account information.</div>
+                        </li>
+                        <li>
+                            <span class="cupertino_bullet"></span>
+                            <div><strong>Updates:</strong> You agree to promptly update your account and payment details so we can complete transactions.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Section 5 -->
+                <div class="cupertino_inset_card">
+                    <div class="cupertino_card_header">
+                        <div class="cupertino_icon_squircle icon_indigo">
+                            <ion-icon name="shield-half-outline"></ion-icon>
+                        </div>
+                        <h4 class="cupertino_card_title">5. Intellectual Property</h4>
+                    </div>
+                    <p class="cupertino_card_text">All content included on the matertinoDEB store, such as text, graphics, logos, icons, images, digital downloads, and software, is the property of matertinoDEB store and protected by international copyright laws.</p>
+                </div>
+
+                <!-- Section 6 -->
+                <div class="cupertino_inset_card">
+                    <div class="cupertino_card_header">
+                        <div class="cupertino_icon_squircle icon_teal">
+                            <ion-icon name="link-outline"></ion-icon>
+                        </div>
+                        <h4 class="cupertino_card_title">6. Third-Party Links</h4>
+                    </div>
+                    <p class="cupertino_card_text">Certain content available via our store may include materials from third parties. Third-party links may direct you to websites not affiliated with us.</p>
+                </div>
+
+                <!-- Section 7 -->
+                <div class="cupertino_inset_card">
+                    <div class="cupertino_card_header">
+                        <div class="cupertino_icon_squircle icon_red">
+                            <ion-icon name="alert-circle-outline"></ion-icon>
+                        </div>
+                        <h4 class="cupertino_card_title">7. Disclaimer of Warranties and Limitation of Liability</h4>
+                    </div>
+                    <p class="cupertino_card_text">We do not guarantee that your use of our service will be uninterrupted, timely, secure, or error-free.</p>
+                    <ul class="cupertino_list">
+                        <li>
+                            <span class="cupertino_bullet"></span>
+                            <div><strong>"As Is" Basis:</strong> The service and all products are provided 'as is' and 'as available' for your use.</div>
+                        </li>
+                        <li>
+                            <span class="cupertino_bullet"></span>
+                            <div><strong>Liability Cap:</strong> In no case shall matertinoDEB store or our team be liable for any injury, loss, claim, or consequential damages.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Section 8 -->
+                <div class="cupertino_inset_card">
+                    <div class="cupertino_card_header">
+                        <div class="cupertino_icon_squircle icon_blue">
+                            <ion-icon name="shield-checkmark-outline"></ion-icon>
+                        </div>
+                        <h4 class="cupertino_card_title">8. Indemnification</h4>
+                    </div>
+                    <p class="cupertino_card_text">You agree to indemnify, defend, and hold harmless matertinoDEB store, partners, officers, and employees from any claim arising from your breach of these Terms.</p>
+                </div>
+
+                <!-- Section 9 -->
+                <div class="cupertino_inset_card">
+                    <div class="cupertino_card_header">
+                        <div class="cupertino_icon_squircle icon_purple">
+                            <ion-icon name="earth-outline"></ion-icon>
+                        </div>
+                        <h4 class="cupertino_card_title">9. Governing Law</h4>
+                    </div>
+                    <p class="cupertino_card_text">These Terms of Service and any separate agreements shall be governed by and construed in accordance with the laws of the jurisdiction in which the matertinoDEB store operates.</p>
+                </div>
+
+                <!-- Section 10 -->
+                <div class="cupertino_inset_card">
+                    <div class="cupertino_card_header">
+                        <div class="cupertino_icon_squircle icon_orange">
+                            <ion-icon name="refresh-outline"></ion-icon>
+                        </div>
+                        <h4 class="cupertino_card_title">10. Changes to Terms of Service</h4>
+                    </div>
+                    <p class="cupertino_card_text">You can review the most current version of the Terms of Service at any time at this page. We reserve the right to update or change any part by posting updates to our website.</p>
+                </div>
+
+                <!-- Section 11: Apple vCard Contact -->
+                <div class="cupertino_inset_card">
+                    <div class="cupertino_card_header">
+                        <div class="cupertino_icon_squircle icon_blue">
+                            <ion-icon name="chatbubbles-outline"></ion-icon>
+                        </div>
+                        <h4 class="cupertino_card_title">11. Contact Information</h4>
+                    </div>
+                    <p class="cupertino_card_text">Questions about the Terms of Service should be sent to us via our Apple Cupertino contact card:</p>
+
+                    <div class="cupertino_vcard">
+                        <div class="cupertino_vcard_header">
+                            <div class="vcard_avatar">
+                                <ion-icon name="storefront"></ion-icon>
+                            </div>
+                            <div>
+                                <div class="vcard_name">matertinoDEB Store</div>
+                                <div class="vcard_role">Verified Merchant</div>
+                            </div>
+                        </div>
+                        <div class="cupertino_vcard_row">
+                            <ion-icon name="location-outline"></ion-icon>
+                            <div>Upper Klinan, Polomolok, South Cotabato</div>
+                        </div>
+                        <div class="cupertino_vcard_row">
+                            <ion-icon name="mail-outline"></ion-icon>
+                            <div><a href="mailto:Ceasarinajadeabarollo@gmail.com">Ceasarinajadeabarollo@gmail.com</a></div>
+                        </div>
+                        <div class="cupertino_vcard_row">
+                            <ion-icon name="call-outline"></ion-icon>
+                            <div><a href="tel:+639756128349">+63 09756128349</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cupertino Sheet Footer -->
+            <div class="cupertino_sheet_footer">
+                <a href="terms-of-service.html" target="_blank" class="btn_cupertino_primary">
+                    <ion-icon name="open-outline"></ion-icon>
+                    <span>Open Full Page</span>
+                </a>
+                <button type="button" class="btn_cupertino_secondary" id="terms-dismiss-btn">
+                    <span>Close</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Minimalist Glass Footer -->
+    <footer class="store_footer">
+        <div class="footer_copy">
+            © 2026 <strong>MatertinoDEB</strong>. All rights reserved.
+        </div>
+        <div class="footer_links">
+            <a href="index.html">Landing Page</a>
+            <a href="https://www.instagram.com/syncsphere.official/" target="_blank" rel="noopener">Instagram</a>
+            <a href="privacy-policy.html" id="footer-privacy-btn">Privacy Policy</a>
+            <a href="terms-of-service.html" id="footer-terms-btn">Terms of Service</a>
+        </div>
+    </footer>
+
+    <!-- Store Interactive Logic Script -->
+    <script src="store.js"></script>
+</body>
+</html>

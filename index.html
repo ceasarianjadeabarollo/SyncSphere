@@ -11,58 +11,7 @@
     <link rel="stylesheet" href="landaingpage.css">
     <title>SyncSphere</title>
 </head>
-<body class="welcome_modal_active">
-
-    <!-- Required Non-Cancelable Welcome Gateway Modal -->
-    <aside class="welcome_modal_overlay" id="welcome-modal-overlay" role="dialog" aria-modal="true" aria-label="Welcome to SyncSphere">
-        <!-- Confetti Canvas for Birthday Celebration -->
-        <canvas id="welcome-confetti-canvas" class="welcome_confetti_canvas"></canvas>
-
-        <div class="welcome_badge_card" id="welcome-badge-card">
-            <!-- Lanyard Slot Punch at Top -->
-            <div class="badge_lanyard_slot" aria-hidden="true"></div>
-
-            <!-- Slides Viewport -->
-            <div class="welcome_slides_viewport">
-                <!-- Slide 1: Hello Syncsphere Fam! -->
-                <div class="welcome_slide active" id="welcome-slide-0" data-slide="0">
-                    <h1 class="welcome_fam_title">
-                        <em>Hello Syncsphere<br>Fam!</em>
-                    </h1>
-                    <p class="welcome_fam_desc">
-                        We’re building something big with SyncSphere, and we want you to help shape it! Drop your thoughts, tell us your workflow struggles, and help us make this app actually work for you. Theres a survey button waiting for you, Every word counts!
-                    </p>
-                </div>
-
-                <!-- Slide 2: Zaider Birthday Announcement -->
-                <div class="welcome_slide" id="welcome-slide-1" data-slide="1">
-                    <div class="welcome_avatar_wrap">
-                        <img src="assets/image/Syncmoji/Untitled design (2).png" alt="Syncsphere - agent" class="welcome_avatar_img">
-                    </div>
-                    <h2 class="welcome_founder_name">SyncSphere</h2>
-                    <p class="welcome_founder_sub">Just a moment while we align the final details. You are about to step into a seamlessly integrated ecosystem designed to help you work smarter. Hang tight as we open the doors and welcome you to the SyncSphere experience.</p>
-                    <span class="welcome_timer_pill" id="welcome-timer-pill">Entering in 5s...</span>
-                </div>
-            </div>
-
-            <!-- Footer: Progress Bars + Nav Buttons -->
-            <div class="welcome_footer">
-                <div class="welcome_progress_row" role="tablist" aria-label="Card progress">
-                    <button type="button" class="welcome_bar active" id="welcome-bar-0" data-go-slide="0" aria-label="Card 1"></button>
-                    <button type="button" class="welcome_bar" id="welcome-bar-1" data-go-slide="1" aria-label="Card 2"></button>
-                </div>
-                <div class="welcome_nav_row">
-                    <button type="button" class="welcome_nav_btn prev_btn" id="welcome-prev-btn" aria-label="Previous card" disabled>
-                        <ion-icon name="chevron-back-outline"></ion-icon>
-                    </button>
-                    <button type="button" class="welcome_nav_btn next_btn" id="welcome-next-btn" aria-label="Next card" title="Next card">
-                        <ion-icon name="chevron-forward-outline"></ion-icon>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </aside>
-
+<body>
     <div class="container_nav" id="container-nav">
          <div class="Scheduly_logo">
                 <img src="assets/image/mainlogo.png" alt="SyncSphere Logo">
@@ -79,8 +28,8 @@
             <a href="#page3-section">How it works</a>
             <a href="#" id="share-nav-btn">Share</a>
             <a href="#faq-section" id="faq-nav-btn">FAQ</a>
-            <a class="Instagram_button" href="https://www.instagram.com/coxsaryan/" target="_blank"><ion-icon name="logo-instagram"></ion-icon>Instagram</a>
-            <button>Download Beta Test Soon</button>
+            <a class="Instagram_button" href="https://www.instagram.com/syncsphere.official/" target="_blank"><ion-icon name="logo-instagram"></ion-icon>Instagram</a>
+            <a href="store.html" style="text-decoration:none;"><button type="button"><ion-icon name="bag-handle"></ion-icon>Download on our store</button></a>
         </div>
     </div>
 
@@ -109,18 +58,10 @@
                 <button><ion-icon name="logo-apple" ></ion-icon>App store</button>
                 -->
                 <div class="web_views" id="web-views-badge" title="Real-time verified views (Unique device tracking enabled)">
-                    <div class="views_pill">
-                        <ion-icon name="eye-outline"></ion-icon>
-                        <span class="views_number" id="view-count-number">0</span>
-                        <span class="views_label">Web views</span>
-                    </div>
                     <div class="device_verified_tooltip" id="device-verified-tooltip">
                         <span class="device_info_icon"><ion-icon name="ios-phone-portrait"></ion-icon></span>
                         <span class="device_info_text" id="device-info-text">Analyzing phone...</span>
                     </div>
-                </div>
-                <div class="advisory">
-                    <p><ion-icon name="warning"></ion-icon>Play Store and App Store is available soon!</p>
                 </div>
          </div>
          <div class="note_advisory">
@@ -130,13 +71,12 @@
                         <img src="assets/image/Syncmoji/Untitled design (2).png" alt="SyncSphere avatar">
                     </div>
                     <div class="message">
-                        <p>Hello! This app is currently under development. Ceasar, MAryAnn, Karla, Zaider, and Renz are conducting a survey to gather feedback. Please click the button below to proceed. Thank you, and God bless!</p>
+                        <p>Hello! The app is officially complete and ready for you to enjoy! Ceasar, MaryAnn, Karla, Zaider, and Renz would love to hear your thoughts, so please feel free to send us your feedback. Thank you, and God bless!</p>
                     </div>
                 </div>
             </div>
          </div>
          <div class="survey_button">
-            <button id="survey-open-btn"><ion-icon name="document"></ion-icon>Survey Here!</button>
             <!--idk--
             <button id="experience_btn">Share your experience</button>
             end of idk-->
@@ -517,7 +457,7 @@
             </div>
         </div>
         <div class="lastone">
-            <p>SyncSphere by MatertinoDEB 2026-2027 All rights Reserved.</p>
+            <p>SyncSphere by MatertinoDEB 2026-2027 All rights Reserved. &bull; <a href="store.html" style="color: inherit; text-decoration: underline;">MatertinoDEB Store</a> &bull; <a href="privacy-policy.html" style="color: inherit; text-decoration: underline;">Privacy Policy</a> &bull; <a href="terms-of-service.html" style="color: inherit; text-decoration: underline;">Terms of Service</a></p>
         </div>
     </div>
 
