@@ -1,16 +1,17 @@
 {
-  "version": "1.0.2",
+  "version": "1.0.1",
   "buildNumber": 2,
   "title": "Scheduly Update Available",
-  "downloadUrl": "https://github.com/ceasarianjadeabarollo/SyncSphere/releases/download/v1.0.2/app-release.apk",
+  "downloadUrl": "https://github.com/ceasarianjadeabarollo/SyncSphere/releases/download/v1.0.1/app-release.apk",
   "whatsNew": [
     "New Calendar UI with expanded bottom grid view",
     "Select date, whole day, this day scheduling options",
-    "Offline Isar synchronization for home todos",
     "Huawei device protection & Pure Mode detection"
   ],
-  "bugFixes": [
+  "bugFixes and change log": [
     "Fixed offline startup todo persistence",
-    "Fixed tablet responsiveness across screens"
+    "Fixed tablet responsiveness across screens",
+    "fixed To-Do home screen not working on the offline mode.",
+    "Remove the normal register/login flow and replaced it with Google Sign-in only to avoid the login error on Huawei devices.",
   ]
 }
