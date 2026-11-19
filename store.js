@@ -2,7 +2,7 @@
    MATERTINODEB APP STORE - INTERACTIVE JAVASCRIPT
    Features:
      - Device Recognizer: Desktop PC Detection & Mobile Requirement Error
-     - Real-Time In-Web APK Download Loading Progress (114.0 MB)
+     - Real-Time In-Web APK Download Loading Progress (79.6 MB)
      - Prominent Dedicated Glass Loading Progress Card with Live Stats
      - System Package In-Web Installer Modal
      - Realistic Home Screen Installed Confirmation Mockup
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 2. APK Constants & Local Storage State
     const APK_PATH = "assets/all_apps/syncSphere.apk";
-    const TOTAL_MB = 114.0;
+    const TOTAL_MB = 79.6;
     const STORAGE_KEY = "syncsphere_installed_status";
 
     let isDownloading = false;
@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
         getBtn.classList.remove("installed", "downloading", "installing");
         if (btnProgressFill) btnProgressFill.style.width = "0%";
         if (btnLabel) btnLabel.textContent = "GET";
-        if (downloadStatusText) downloadStatusText.textContent = "Free • Official APK Release • 114 MB";
+        if (downloadStatusText) downloadStatusText.textContent = "Free • Official APK Release • 79.6 MB";
     }
 
     // Modal Helpers
@@ -248,13 +248,13 @@ document.addEventListener("DOMContentLoaded", () => {
             cardDownloadPct.textContent = "100%";
         }
         if (cardDownloadBytes) {
-            cardDownloadBytes.textContent = "114.0 MB • Download Complete";
+            cardDownloadBytes.textContent = "79.6 MB • Download Complete";
         }
         if (cardDownloadSpeed) {
             cardDownloadSpeed.textContent = "Verified";
         }
         if (downloadStatusText) {
-            downloadStatusText.textContent = `Downloaded 114.0 MB • Opening system installer...`;
+            downloadStatusText.textContent = `Downloaded 79.6 MB • Opening system installer...`;
         }
 
         // Smooth transition to the In-Web System Installer
@@ -402,7 +402,7 @@ document.addEventListener("DOMContentLoaded", () => {
         installerCancelBtn.addEventListener("click", () => {
             closeModal(webInstallerModal);
             if (btnLabel) btnLabel.textContent = "INSTALL";
-            if (downloadStatusText) downloadStatusText.textContent = "114.0 MB downloaded • Tap to install";
+            if (downloadStatusText) downloadStatusText.textContent = "79.6 MB downloaded • Tap to install";
         });
     }
 
