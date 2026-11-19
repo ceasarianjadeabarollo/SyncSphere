@@ -1,0 +1,16 @@
+{
+  "version": "1.0.2",
+  "buildNumber": 2,
+  "title": "Scheduly Update Available",
+  "downloadUrl": "https://github.com/ceasarianjadeabarollo/SyncSphere/releases/download/v1.0.2/app-release.apk",
+  "whatsNew": [
+    "New Calendar UI with expanded bottom grid view",
+    "Select date, whole day, this day scheduling options",
+    "Offline Isar synchronization for home todos",
+    "Huawei device protection & Pure Mode detection"
+  ],
+  "bugFixes": [
+    "Fixed offline startup todo persistence",
+    "Fixed tablet responsiveness across screens"
+  ]
+}
