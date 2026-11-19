@@ -12,6 +12,6 @@
     "Fixed offline startup todo persistence",
     "Fixed tablet responsiveness across screens",
     "fixed To-Do home screen not working on the offline mode.",
-    "Remove the normal register/login flow and replaced it with Google Sign-in only to avoid the login error on Huawei devices.",
+    "Remove the normal register/login flow and replaced it with Google Sign-in only to avoid the login error on Huawei devices."
   ]
 }
