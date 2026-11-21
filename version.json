@@ -1,10 +1,23 @@
 {
   "version": "2.0.2",
-  "buildNumber": 4,
+  "buildNumber": 3,
   "title": "Scheduly Update Available",
   "downloadUrl": "https://drive.google.com/file/d/1toAf_SfQZZ2N8CQ2Cz36Os3iAGZcxa_1/view?usp=drive_link",
+  "whatsNew": [
+    "New calendar UI with expanded bottom grid view.",
+    "Select date, whole day, this day scheduling options.", 
+    "New background emoji pattern.",
+    "Calendar widget.",
+    "Sync your Schedule to your ID using NFC.",
+    "Change log and Fixed."
+  ],
   "bugFixes": [
-    "Freezing the home screen in lowend device.",
-    "Fixed the courses not showing the folder."
+    "Fixed offline startup todo persistence",
+    "Fixed tablet responsiveness across screens",
+    "Fixed To-Do home screen not working in offline mode",
+    "Google Sign-In only to avoid login issues on Huawei devices"
   ]
 }
+
+
+
